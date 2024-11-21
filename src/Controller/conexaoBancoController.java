@@ -9,6 +9,7 @@ package Controller;
 
 //import View.cadastroConfigBanco;
 //import java.beans.Statement;
+import View.cadastroConfigBanco;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
@@ -34,6 +35,10 @@ public class conexaoBancoController {
       
     @SuppressWarnings("PackageVisibleField")
       String driverjdbc; // =  "org.postgresql.Driver";
+
+    public conexaoBancoController(cadastroConfigBanco aThis) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 
   

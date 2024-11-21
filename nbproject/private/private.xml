@@ -4,19 +4,15 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Fabinhu/Documents/NetBeansProjects/almoxarifadoExpress/src/View/cadastroEPI.java</file>
-            <file>file:/C:/Users/Fabinhu/Documents/NetBeansProjects/almoxarifadoExpress/src/View/cadastroConfigBanco.java</file>
-            <file>file:/C:/Users/Fabinhu/Documents/NetBeansProjects/almoxarifadoExpress/src/View/agendaEntregaEPI.java</file>
-            <file>file:/C:/Users/Fabinhu/Documents/NetBeansProjects/almoxarifadoExpress/src/View/cadastroFuncionario.java</file>
-            <file>file:/C:/Users/Fabinhu/Documents/NetBeansProjects/almoxarifadoExpress/src/View/Relatorios/RelatorioUsuario.java</file>
-            <file>file:/C:/Users/Fabinhu/Documents/NetBeansProjects/almoxarifadoExpress/src/View/login.java</file>
+            <file>file:/C:/Users/Fabinhu/Documents/NetBeansProjects/almoxarifadoExpress/src/Controller/cadastroEpiController.java</file>
+            <file>file:/C:/Users/Fabinhu/Documents/NetBeansProjects/almoxarifadoExpress/src/Model/epi.java</file>
+            <file>file:/C:/Users/Fabinhu/Documents/NetBeansProjects/almoxarifadoExpress/src/Model/DAO/epiDAO.java</file>
+            <file>file:/C:/Users/Fabinhu/Documents/NetBeansProjects/almoxarifadoExpress/src/View/Relatorios/relatorioEpi.java</file>
+            <file>file:/C:/Users/Fabinhu/Documents/NetBeansProjects/almoxarifadoExpress/src/View/Relatorios/relatorioUsuario.java</file>
             <file>file:/C:/Users/Fabinhu/Documents/NetBeansProjects/almoxarifadoExpress/src/View/cadastroUsuario.java</file>
-            <file>file:/C:/Users/Fabinhu/Documents/NetBeansProjects/almoxarifadoExpress/src/Model/DAO/usuarioDAO.java</file>
-            <file>file:/C:/Users/Fabinhu/Documents/NetBeansProjects/almoxarifadoExpress/src/View/cadastroEmpresa.java</file>
-            <file>file:/C:/Users/Fabinhu/Documents/NetBeansProjects/almoxarifadoExpress/src/View/menuPrincipal.java</file>
-            <file>file:/C:/Users/Fabinhu/Documents/NetBeansProjects/almoxarifadoExpress/src/Controller/RelatorioController.java</file>
-            <file>file:/C:/Users/Fabinhu/Documents/NetBeansProjects/almoxarifadoExpress/src/View/cadastroSetor.java</file>
             <file>file:/C:/Users/Fabinhu/Documents/NetBeansProjects/almoxarifadoExpress/src/Controller/cadastroUsuarioCcontroller.java</file>
-            <file>file:/C:/Users/Fabinhu/Documents/NetBeansProjects/almoxarifadoExpress/src/Model/DAO/Relatorio/relatorioConsultaUsuario.java</file>
+            <file>file:/C:/Users/Fabinhu/Documents/NetBeansProjects/almoxarifadoExpress/src/Model/usuario.java</file>
+            <file>file:/C:/Users/Fabinhu/Documents/NetBeansProjects/almoxarifadoExpress/src/Model/DAO/usuarioDAO.java</file>
         </group>
     </open-files>
 </project-private>

@@ -5,19 +5,29 @@
  */
 package View;
 
+import Controller.cadastroEmpresaController;
+import javax.swing.JComboBox;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Fabinhu
  */
+
 public class cadastroEmpresa extends javax.swing.JFrame {
 
+    private final cadastroEmpresaController controller;
     /**
      * Creates new form cadastroEmpresa
      */
     public cadastroEmpresa() {
         initComponents();
+        controller = new cadastroEmpresaController(this);
+        idEmpresa.setEditable(false);
     }
 
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,12 +42,12 @@ public class cadastroEmpresa extends javax.swing.JFrame {
         idEmpresa = new javax.swing.JTextField();
         lblCadastroFuncionarioNome = new javax.swing.JLabel();
         nomeEmpresa = new javax.swing.JTextField();
-        cpfEmpresa = new javax.swing.JTextField();
+        cpfCnpjEmpresa = new javax.swing.JTextField();
         lblCadastroFuncionarioCpf = new javax.swing.JLabel();
         ieEmpresa = new javax.swing.JTextField();
         lblCadastroFuncionarioRg = new javax.swing.JLabel();
         lblCadastroEpiDecolverTroca = new javax.swing.JLabel();
-        jcbCadastroEpiEntregaTroca = new javax.swing.JComboBox<>();
+        cbSituacaoCadastroEmpresa = new javax.swing.JComboBox<>();
         lblCadastroFuncionarioNome1 = new javax.swing.JLabel();
         enderecoEmpresa = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -50,6 +60,12 @@ public class cadastroEmpresa extends javax.swing.JFrame {
 
         lblCadastroFuncionarioChapa.setText("Código");
 
+        idEmpresa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idEmpresaActionPerformed(evt);
+            }
+        });
+
         lblCadastroFuncionarioNome.setText("Nome Empresa");
 
         lblCadastroFuncionarioCpf.setText("CNPJ / CPF");
@@ -58,7 +74,7 @@ public class cadastroEmpresa extends javax.swing.JFrame {
 
         lblCadastroEpiDecolverTroca.setText("Situação");
 
-        jcbCadastroEpiEntregaTroca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ativo", "Ferias", "Excluido" }));
+        cbSituacaoCadastroEmpresa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ativo", "Ferias", "Excluido" }));
 
         lblCadastroFuncionarioNome1.setText("Endereço");
 
@@ -76,7 +92,7 @@ public class cadastroEmpresa extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(cpfEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cpfCnpjEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(39, 39, 39)
                                 .addComponent(lblCadastroFuncionarioRg)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -90,7 +106,7 @@ public class cadastroEmpresa extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblCadastroEpiDecolverTroca)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jcbCadastroEpiEntregaTroca, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cbSituacaoCadastroEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(lblCadastroFuncionarioNome1)
@@ -106,14 +122,14 @@ public class cadastroEmpresa extends javax.swing.JFrame {
                     .addComponent(lblCadastroFuncionarioChapa)
                     .addComponent(idEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCadastroEpiDecolverTroca)
-                    .addComponent(jcbCadastroEpiEntregaTroca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbSituacaoCadastroEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nomeEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCadastroFuncionarioNome))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cpfEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cpfCnpjEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCadastroFuncionarioCpf)
                     .addComponent(ieEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCadastroFuncionarioRg))
@@ -130,6 +146,11 @@ public class cadastroEmpresa extends javax.swing.JFrame {
         cancelarEmpresa.setText("Cancelar");
 
         salvarEmpresa.setText("Salvar");
+        salvarEmpresa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salvarEmpresaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -168,50 +189,25 @@ public class cadastroEmpresa extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(cadastroEmpresa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(cadastroEmpresa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(cadastroEmpresa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(cadastroEmpresa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void idEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idEmpresaActionPerformed
+        idEmpresa.setEditable(false);
+    }//GEN-LAST:event_idEmpresaActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new cadastroEmpresa().setVisible(true);
-            }
-        });
-    }
+    private void salvarEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarEmpresaActionPerformed
+        controller.inserirEmpresaBanco(); 
+    }//GEN-LAST:event_salvarEmpresaActionPerformed
+   
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelarEmpresa;
-    private javax.swing.JTextField cpfEmpresa;
+    private javax.swing.JComboBox<String> cbSituacaoCadastroEmpresa;
+    private javax.swing.JTextField cpfCnpjEmpresa;
     private javax.swing.JTextField enderecoEmpresa;
-    private javax.swing.JTextField idEmpresa;
+    public javax.swing.JTextField idEmpresa;
     private javax.swing.JTextField ieEmpresa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JComboBox<String> jcbCadastroEpiEntregaTroca;
     private javax.swing.JLabel lblCadastroEpiDecolverTroca;
     private javax.swing.JLabel lblCadastroFuncionarioChapa;
     private javax.swing.JLabel lblCadastroFuncionarioCpf;
@@ -221,4 +217,47 @@ public class cadastroEmpresa extends javax.swing.JFrame {
     private javax.swing.JTextField nomeEmpresa;
     private javax.swing.JButton salvarEmpresa;
     // End of variables declaration//GEN-END:variables
+
+    public JTextField getCpfCnpjEmpresa() {
+        return cpfCnpjEmpresa;
+    }
+
+    public void setCpfCnpjEmpresa(JTextField cpfCnpjEmpresa) {
+        this.cpfCnpjEmpresa = cpfCnpjEmpresa;
+    }
+
+    public JTextField getEnderecoEmpresa() {
+        return enderecoEmpresa;
+    }
+
+    public void setEnderecoEmpresa(JTextField enderecoEmpresa) {
+        this.enderecoEmpresa = enderecoEmpresa;
+    }
+
+    public JTextField getIeEmpresa() {
+        return ieEmpresa;
+    }
+
+    public void setIeEmpresa(JTextField ieEmpresa) {
+        this.ieEmpresa = ieEmpresa;
+    }
+
+    public JTextField getNomeEmpresa() {
+        return nomeEmpresa;
+    }
+
+    public void setNomeEmpresa(JTextField nomeEmpresa) {
+        this.nomeEmpresa = nomeEmpresa;
+    }
+
+    public JComboBox<String> getCbSituacaoCadastroEmpresa() {
+        return cbSituacaoCadastroEmpresa;
+    }
+
+    public void setCbSituacaoCadastroEmpresa(JComboBox<String> cbSituacaoCadastroEmpresa) {
+        this.cbSituacaoCadastroEmpresa = cbSituacaoCadastroEmpresa;
+    }
+
+    
+
 }

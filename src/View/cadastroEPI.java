@@ -5,17 +5,26 @@
  */
 package View;
 
+
+import Controller.cadastroEpiController;
+import javax.swing.JComboBox;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Fabinhu
  */
 public class cadastroEPI extends javax.swing.JFrame {
 
+     private final cadastroEpiController controller;
+    
     /**
      * Creates new form cadastroEPI
      */
     public cadastroEPI() {
         initComponents();
+        controller = new cadastroEpiController(this);
     }
 
     /**
@@ -31,37 +40,40 @@ public class cadastroEPI extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         lblCadastroEpiDescartavel = new javax.swing.JLabel();
-        jcbCadastroEpiDescartavel = new javax.swing.JComboBox<>();
+        descartavelCadastroEpi = new javax.swing.JComboBox<>();
         lblCadastroEpiDecolverTroca = new javax.swing.JLabel();
-        jcbCadastroEpiEntregaTroca = new javax.swing.JComboBox<>();
+        entregaTrocaCadastroEpi = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        observacaoCadastroEpi = new javax.swing.JTextArea();
         lblCadastroEpiObservacao = new javax.swing.JLabel();
-        jtfCadastroEpiValidade = new javax.swing.JTextField();
+        validadeCadastroEpi = new javax.swing.JTextField();
         lblCadastroEpiValidade = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         lblCadastroEpiCodigo = new javax.swing.JLabel();
-        jtfCadastroEpiId = new javax.swing.JTextField();
+        idCadastroEpi = new javax.swing.JTextField();
         lblCadastroEpiDescricao = new javax.swing.JLabel();
-        jtfCadastroEpiDescricao = new javax.swing.JTextField();
+        descricaoCadastroEpi = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         lblCadastroEpiCodigoCA = new javax.swing.JLabel();
-        jtfCadastroEpCa = new javax.swing.JTextField();
+        codigoCACadastroEpi = new javax.swing.JTextField();
         lblCadastroEpiNomeFabricante = new javax.swing.JLabel();
-        jtfCadastroEpiNomeFornecedor = new javax.swing.JTextField();
+        nomeFornecedorfCadastroEpi = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         lblCadastroEpiLoteCa = new javax.swing.JLabel();
-        jtfCadastroEpiLoteCa = new javax.swing.JTextField();
+        loteCaCadastroEpi = new javax.swing.JTextField();
+        codigoFornCadastroEpi = new javax.swing.JTextField();
+        lblCadastroEpiCodigoCA1 = new javax.swing.JLabel();
         btnCadastroEpiCancelar = new javax.swing.JButton();
         btnCadastroEpiSalvar = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         lblCadastroEpiInstrucao = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jtfCadastroEpiIntrucao = new javax.swing.JTextArea();
+        instrucaoCadastroEpi = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Consulta de EPI");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblcadatroEPI.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -72,17 +84,22 @@ public class cadastroEPI extends javax.swing.JFrame {
 
         lblCadastroEpiDescartavel.setText("Descartável");
 
-        jcbCadastroEpiDescartavel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sim", "Não" }));
+        descartavelCadastroEpi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sim", "Não" }));
+        descartavelCadastroEpi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                descartavelCadastroEpiActionPerformed(evt);
+            }
+        });
 
         lblCadastroEpiDecolverTroca.setText("Devolver na Troca");
 
-        jcbCadastroEpiEntregaTroca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sim", "Não" }));
+        entregaTrocaCadastroEpi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sim", "Não" }));
 
         jLabel1.setText("Informações de Troca");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        observacaoCadastroEpi.setColumns(20);
+        observacaoCadastroEpi.setRows(5);
+        jScrollPane1.setViewportView(observacaoCadastroEpi);
 
         lblCadastroEpiObservacao.setText("Observações");
 
@@ -113,15 +130,15 @@ public class cadastroEPI extends javax.swing.JFrame {
                         .addGap(6, 6, 6)
                         .addComponent(lblCadastroEpiDescartavel)
                         .addGap(18, 18, 18)
-                        .addComponent(jcbCadastroEpiDescartavel, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(descartavelCadastroEpi, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblCadastroEpiDecolverTroca)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jcbCadastroEpiEntregaTroca, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(entregaTrocaCadastroEpi, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40)
                         .addComponent(lblCadastroEpiValidade)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jtfCadastroEpiValidade, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(validadeCadastroEpi, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(23, 23, 23))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -132,10 +149,10 @@ public class cadastroEPI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCadastroEpiDescartavel)
-                    .addComponent(jcbCadastroEpiDescartavel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(descartavelCadastroEpi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCadastroEpiDecolverTroca)
-                    .addComponent(jcbCadastroEpiEntregaTroca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfCadastroEpiValidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(entregaTrocaCadastroEpi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(validadeCadastroEpi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCadastroEpiValidade))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -152,6 +169,12 @@ public class cadastroEPI extends javax.swing.JFrame {
 
         lblCadastroEpiDescricao.setText("Descrição");
 
+        descricaoCadastroEpi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                descricaoCadastroEpiActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -167,9 +190,9 @@ public class cadastroEPI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jtfCadastroEpiId, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(idCadastroEpi, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jtfCadastroEpiDescricao))
+                    .addComponent(descricaoCadastroEpi))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -178,10 +201,10 @@ public class cadastroEPI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCadastroEpiCodigo)
-                    .addComponent(jtfCadastroEpiId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(idCadastroEpi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtfCadastroEpiDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(descricaoCadastroEpi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCadastroEpiDescricao))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -192,9 +215,9 @@ public class cadastroEPI extends javax.swing.JFrame {
 
         lblCadastroEpiNomeFabricante.setText("Nome Fabbricante");
 
-        jtfCadastroEpiNomeFornecedor.addActionListener(new java.awt.event.ActionListener() {
+        nomeFornecedorfCadastroEpi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfCadastroEpiNomeFornecedorActionPerformed(evt);
+                nomeFornecedorfCadastroEpiActionPerformed(evt);
             }
         });
 
@@ -202,57 +225,79 @@ public class cadastroEPI extends javax.swing.JFrame {
 
         lblCadastroEpiLoteCa.setText("Lote CA");
 
+        lblCadastroEpiCodigoCA1.setText("Código Forn.");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jLabel10)
+                .addContainerGap(458, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(lblCadastroEpiCodigoCA)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(codigoCACadastroEpi, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(lblCadastroEpiCodigoCA1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(codigoFornCadastroEpi, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblCadastroEpiNomeFabricante)
-                            .addComponent(lblCadastroEpiCodigoCA))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtfCadastroEpCa, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jtfCadastroEpiNomeFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(lblCadastroEpiLoteCa)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jtfCadastroEpiLoteCa, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jLabel10))
-                .addContainerGap(13, Short.MAX_VALUE))
+                        .addComponent(lblCadastroEpiNomeFabricante)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nomeFornecedorfCadastroEpi, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addComponent(lblCadastroEpiLoteCa)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(loteCaCadastroEpi, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(17, 17, 17))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtfCadastroEpCa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCadastroEpiCodigoCA))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(loteCaCadastroEpi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblCadastroEpiLoteCa))
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(codigoCACadastroEpi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblCadastroEpiCodigoCA)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCadastroEpiNomeFabricante)
-                    .addComponent(jtfCadastroEpiNomeFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfCadastroEpiLoteCa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCadastroEpiLoteCa))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(codigoFornCadastroEpi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblCadastroEpiCodigoCA1))
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblCadastroEpiNomeFabricante)
+                        .addComponent(nomeFornecedorfCadastroEpi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(10, Short.MAX_VALUE))
         );
 
         btnCadastroEpiCancelar.setText("Cancelar");
 
         btnCadastroEpiSalvar.setText("Salvar");
+        btnCadastroEpiSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastroEpiSalvarActionPerformed(evt);
+            }
+        });
 
         jPanel5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         lblCadastroEpiInstrucao.setText("Instrução de Uso");
 
-        jtfCadastroEpiIntrucao.setColumns(20);
-        jtfCadastroEpiIntrucao.setRows(5);
-        jScrollPane2.setViewportView(jtfCadastroEpiIntrucao);
+        instrucaoCadastroEpi.setColumns(20);
+        instrucaoCadastroEpi.setRows(5);
+        jScrollPane2.setViewportView(instrucaoCadastroEpi);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -317,48 +362,33 @@ public class cadastroEPI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jtfCadastroEpiNomeFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCadastroEpiNomeFornecedorActionPerformed
+    private void nomeFornecedorfCadastroEpiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeFornecedorfCadastroEpiActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtfCadastroEpiNomeFornecedorActionPerformed
+    }//GEN-LAST:event_nomeFornecedorfCadastroEpiActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(cadastroEPI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(cadastroEPI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(cadastroEPI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(cadastroEPI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void descartavelCadastroEpiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descartavelCadastroEpiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_descartavelCadastroEpiActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new cadastroEPI().setVisible(true);
-            }
-        });
-    }
+    private void btnCadastroEpiSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroEpiSalvarActionPerformed
+       controller.inserirEpiBanco();
+    }//GEN-LAST:event_btnCadastroEpiSalvarActionPerformed
+
+    private void descricaoCadastroEpiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descricaoCadastroEpiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_descricaoCadastroEpiActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastroEpiCancelar;
     private javax.swing.JButton btnCadastroEpiSalvar;
+    private javax.swing.JTextField codigoCACadastroEpi;
+    private javax.swing.JTextField codigoFornCadastroEpi;
+    private javax.swing.JComboBox<String> descartavelCadastroEpi;
+    private javax.swing.JTextField descricaoCadastroEpi;
+    private javax.swing.JComboBox<String> entregaTrocaCadastroEpi;
+    private javax.swing.JTextField idCadastroEpi;
+    private javax.swing.JTextArea instrucaoCadastroEpi;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -369,18 +399,9 @@ public class cadastroEPI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JComboBox<String> jcbCadastroEpiDescartavel;
-    private javax.swing.JComboBox<String> jcbCadastroEpiEntregaTroca;
-    private javax.swing.JTextField jtfCadastroEpCa;
-    private javax.swing.JTextField jtfCadastroEpiDescricao;
-    private javax.swing.JTextField jtfCadastroEpiId;
-    private javax.swing.JTextArea jtfCadastroEpiIntrucao;
-    private javax.swing.JTextField jtfCadastroEpiLoteCa;
-    private javax.swing.JTextField jtfCadastroEpiNomeFornecedor;
-    private javax.swing.JTextField jtfCadastroEpiValidade;
     private javax.swing.JLabel lblCadastroEpiCodigo;
     private javax.swing.JLabel lblCadastroEpiCodigoCA;
+    private javax.swing.JLabel lblCadastroEpiCodigoCA1;
     private javax.swing.JLabel lblCadastroEpiDecolverTroca;
     private javax.swing.JLabel lblCadastroEpiDescartavel;
     private javax.swing.JLabel lblCadastroEpiDescricao;
@@ -390,5 +411,101 @@ public class cadastroEPI extends javax.swing.JFrame {
     private javax.swing.JLabel lblCadastroEpiObservacao;
     private javax.swing.JLabel lblCadastroEpiValidade;
     private javax.swing.JLabel lblcadatroEPI;
+    private javax.swing.JTextField loteCaCadastroEpi;
+    private javax.swing.JTextField nomeFornecedorfCadastroEpi;
+    private javax.swing.JTextArea observacaoCadastroEpi;
+    private javax.swing.JTextField validadeCadastroEpi;
     // End of variables declaration//GEN-END:variables
+
+
+
+    public JTextField getCodigoCACadastroEpi() {
+        return codigoCACadastroEpi;
+    }
+
+    public void setCodigoCACadastroEpi(JTextField codigoCACadastroEpi) {
+        this.codigoCACadastroEpi = codigoCACadastroEpi;
+    }
+
+    public JTextField getCodigoFornCadastroEpi() {
+        return codigoFornCadastroEpi;
+    }
+
+    public void setCodigoFornCadastroEpi(JTextField codigoFornCadastroEpi) {
+        this.codigoFornCadastroEpi = codigoFornCadastroEpi;
+    }
+
+    public JComboBox<String> getDescartavelCadastroEpi() {
+        return descartavelCadastroEpi;
+    }
+
+    public void setDescartavelCadastroEpi(JComboBox<String> descartavelCadastroEpi) {
+        this.descartavelCadastroEpi = descartavelCadastroEpi;
+    }
+
+    public JTextField getDescricaoCadastroEpi() {
+        return descricaoCadastroEpi;
+    }
+
+    public void setDescricaoCadastroEpi(JTextField descricaoCadastroEpi) {
+        this.descricaoCadastroEpi = descricaoCadastroEpi;
+    }
+
+    public JComboBox<String> getEntregaTrocaCadastroEpi() {
+        return entregaTrocaCadastroEpi;
+    }
+
+    public void setEntregaTrocaCadastroEpi(JComboBox<String> entregaTrocaCadastroEpi) {
+        this.entregaTrocaCadastroEpi = entregaTrocaCadastroEpi;
+    }
+
+    public JTextField getIdCadastroEpi() {
+        return idCadastroEpi;
+    }
+
+    public void setIdCadastroEpi(JTextField idCadastroEpi) {
+        this.idCadastroEpi = idCadastroEpi;
+    }
+
+    public JTextArea getInstrucaoCadastroEpi() {
+        return instrucaoCadastroEpi;
+    }
+
+    public void setInstrucaoCadastroEpi(JTextArea instucaoCadastroEpi) {
+        this.instrucaoCadastroEpi = instucaoCadastroEpi;
+    }
+
+    public JTextField getLoteCaCadastroEpi() {
+        return loteCaCadastroEpi;
+    }
+
+    public void setLoteCaCadastroEpi(JTextField loteCaCadastroEpi) {
+        this.loteCaCadastroEpi = loteCaCadastroEpi;
+    }
+
+    public JTextField getNomeFornecedorfCadastroEpi() {
+        return nomeFornecedorfCadastroEpi;
+    }
+
+    public void setNomeFornecedorfCadastroEpi(JTextField nomeFornecedorfCadastroEpi) {
+        this.nomeFornecedorfCadastroEpi = nomeFornecedorfCadastroEpi;
+    }
+
+    public JTextArea getObservacaoCadastroEpi() {
+        return observacaoCadastroEpi;
+    }
+
+    public void setObservacaoCadastroEpi(JTextArea observacaoCadastroEpi) {
+        this.observacaoCadastroEpi = observacaoCadastroEpi;
+    }
+
+    public JTextField getValidadeCadastroEpi() {
+        return validadeCadastroEpi;
+    }
+
+    public void setValidadeCadastroEpi(JTextField validadeCadastroEpi) {
+        this.validadeCadastroEpi = validadeCadastroEpi;
+    }
+
+
 }

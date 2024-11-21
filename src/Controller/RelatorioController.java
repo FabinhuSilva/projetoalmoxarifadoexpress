@@ -40,27 +40,8 @@ public class RelatorioController {
         this.conBanco = conBanco;
     }*/
  
-    public void sqlConsultaRelatorio(String SqlConsulta){
-     
-        //Usar isEmpty() para campo vazio
-       String sql = null;
-       
-        sql = "select * from usuario where nome = "+conteudonome+" and login="conteudologin" and email="conteudoemail" and id_situacaocadastro="";";
-        
-       if(nome == vazio && login == vazio && email == vazio){
-          
-       }else if(login =! vazio ){
-           sql = "select * from usuario where nome like "conteudo_campo_nome" ";
-       }else if(login == vazio && email == vazio){
-           sql = "select * from usuario where nome like "conteudo_campo_nome" ";
-           
-       }
-        
-        
-    }
-    
-    public void limparTelaConsultaRelatorio(){
-        
+    public void sqlConsultaRelatorio(String SqlConsulta){ 
+         
         /* Carregar todos os campos
         
         CampoDeTexto.setText(""); 

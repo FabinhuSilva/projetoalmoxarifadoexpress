@@ -28,8 +28,7 @@ public class main {
       usuario.salvarUsuario(usuarioTeste);
         */
         
-     
-   // Model.DAO.setorDAO setor = new Model.DAO.setorDAO();
+   
     //setor.salvarSetor();   
     
     //Model.DAO.funcionarioDAO setor = new Model.DAO.funcionarioDAO();

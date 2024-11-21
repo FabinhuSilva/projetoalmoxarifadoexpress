@@ -16,6 +16,7 @@ import java.sql.SQLException;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import Controller.conexaoBancoController;
+import javax.swing.JFrame;
 /**
  *
  * @author Fabinhu

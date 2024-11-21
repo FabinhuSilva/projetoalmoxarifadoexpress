@@ -67,6 +67,11 @@ public class menuPrincipal extends javax.swing.JFrame {
         getContentPane().add(lblMenuPrincipalimagemFundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 640));
 
         jmCadastro.setText("Cadastro");
+        jmCadastro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmCadastroActionPerformed(evt);
+            }
+        });
 
         jmiCadastroEPI.setText("EPI");
         jmiCadastroEPI.addActionListener(new java.awt.event.ActionListener() {
@@ -77,12 +82,32 @@ public class menuPrincipal extends javax.swing.JFrame {
         jmCadastro.add(jmiCadastroEPI);
 
         jmCadastroFuncionario.setText("Funcionario");
+        jmCadastroFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmCadastroFuncionarioActionPerformed(evt);
+            }
+        });
         jmCadastro.add(jmCadastroFuncionario);
 
         jmCadastroEmpresa.setText("Empresa");
+        jmCadastroEmpresa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jmCadastroEmpresaMouseClicked(evt);
+            }
+        });
+        jmCadastroEmpresa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmCadastroEmpresaActionPerformed(evt);
+            }
+        });
         jmCadastro.add(jmCadastroEmpresa);
 
         jmCadastroUsuario.setText("Usuario Sistema");
+        jmCadastroUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmCadastroUsuarioActionPerformed(evt);
+            }
+        });
         jmCadastro.add(jmCadastroUsuario);
 
         jMenuBar1.add(jmCadastro);
@@ -129,6 +154,11 @@ public class menuPrincipal extends javax.swing.JFrame {
                 jmSairMouseClicked(evt);
             }
         });
+        jmSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmSairActionPerformed(evt);
+            }
+        });
         jMenuBar1.add(jmSair);
 
         MenuTesteFuncoes.setText("Menu de Testes");
@@ -146,10 +176,12 @@ public class menuPrincipal extends javax.swing.JFrame {
         setJMenuBar(jMenuBar1);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jmiCadastroEPIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCadastroEPIActionPerformed
-        // TODO add your handling code here:
+        View.Relatorios.relatorioEpi epi = new View.Relatorios.relatorioEpi();
+        epi.setVisible(true);
     }//GEN-LAST:event_jmiCadastroEPIActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -189,43 +221,37 @@ public class menuPrincipal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Erro Apresentado ao SAIR: "+ex);
         }
         System.exit(0);
+        this.dispose();
     }//GEN-LAST:event_jmSairMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(menuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(menuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(menuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(menuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
+    private void jmSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmSairActionPerformed
+  
+    }//GEN-LAST:event_jmSairActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new menuPrincipal().setVisible(true);
-            }
-        });
-    }
+    private void jmCadastroFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCadastroFuncionarioActionPerformed
+         View.cadastroFuncionario funcionario = new View.cadastroFuncionario();
+        funcionario.setVisible(true);
+    }//GEN-LAST:event_jmCadastroFuncionarioActionPerformed
+
+    private void jmCadastroEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCadastroEmpresaActionPerformed
+         View.Relatorios.relatorioEmpresa empresa = new View.Relatorios.relatorioEmpresa();
+        empresa.setVisible(true);
+    }//GEN-LAST:event_jmCadastroEmpresaActionPerformed
+
+    private void jmCadastroUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCadastroUsuarioActionPerformed
+        View.Relatorios.relatorioUsuario usuario = new View.Relatorios.relatorioUsuario();
+        usuario.setVisible(true);
+    }//GEN-LAST:event_jmCadastroUsuarioActionPerformed
+
+    private void jmCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCadastroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jmCadastroActionPerformed
+
+    private void jmCadastroEmpresaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmCadastroEmpresaMouseClicked
+        View.Relatorios.relatorioEmpresa empresa = new View.Relatorios.relatorioEmpresa();
+        empresa.setVisible(true);
+    }//GEN-LAST:event_jmCadastroEmpresaMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu MenuTesteFuncoes;

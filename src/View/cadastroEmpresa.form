@@ -86,7 +86,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="cpfEmpresa" min="-2" pref="170" max="-2" attributes="0"/>
+                                  <Component id="cpfCnpjEmpresa" min="-2" pref="170" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                                   <Component id="lblCadastroFuncionarioRg" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -103,7 +103,7 @@
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="lblCadastroEpiDecolverTroca" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jcbCadastroEpiEntregaTroca" min="-2" pref="84" max="-2" attributes="0"/>
+                          <Component id="cbSituacaoCadastroEmpresa" min="-2" pref="84" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
@@ -124,7 +124,7 @@
                       <Component id="lblCadastroFuncionarioChapa" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="idEmpresa" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblCadastroEpiDecolverTroca" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jcbCadastroEpiEntregaTroca" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cbSituacaoCadastroEmpresa" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -133,7 +133,7 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="cpfEmpresa" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cpfCnpjEmpresa" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblCadastroFuncionarioCpf" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="ieEmpresa" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblCadastroFuncionarioRg" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -155,6 +155,12 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="idEmpresa">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="idEmpresaActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="lblCadastroFuncionarioNome">
           <Properties>
@@ -163,7 +169,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="nomeEmpresa">
         </Component>
-        <Component class="javax.swing.JTextField" name="cpfEmpresa">
+        <Component class="javax.swing.JTextField" name="cpfCnpjEmpresa">
         </Component>
         <Component class="javax.swing.JLabel" name="lblCadastroFuncionarioCpf">
           <Properties>
@@ -182,7 +188,7 @@
             <Property name="text" type="java.lang.String" value="Situa&#xe7;&#xe3;o"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jcbCadastroEpiEntregaTroca">
+        <Component class="javax.swing.JComboBox" name="cbSituacaoCadastroEmpresa">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="3">
@@ -222,6 +228,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Salvar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="salvarEmpresaActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

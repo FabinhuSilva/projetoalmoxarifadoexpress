@@ -31,10 +31,10 @@ public class cadastroUsuarioCcontroller {
         String login = view.getLoginUsuario().getText();
         String senha = view.getSenhaUsuario().getText();
         String email = view.getEmailUsuario().getText();
-        // CORRIGIR int situacaocadastro = jcbSituacaoCadastro
+        //String situacaocadastro = view.getjcbSituacaoCadastro
         
         
-        usuario usuarioTeste = new usuario(nome, login,senha,email,1);
+      usuario usuarioTeste = new usuario(nome, login,senha,email,1);
 
         try {
 

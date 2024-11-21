@@ -18,6 +18,7 @@ private boolean descartavel;
 private boolean devolver;
 private String instrucao;
 private int ca;
+private int id_empresa;
 private String nomefabricanteca;
 private String loteca;
 private String observacaotroca;
@@ -44,8 +45,49 @@ private String observacaotroca;
         this.nomefabricanteca = nomefabricanteca;
         this.loteca = loteca;
     }
+
+    public epi(String descricao, int validade, boolean descartavel, boolean devolver, String instrucao, int ca, int id_empresa, String loteca, String observacaotroca) {
+        this.descricao = descricao;
+        this.validade = validade;
+        this.descartavel = descartavel;
+        this.devolver = devolver;
+        this.instrucao = instrucao;
+        this.ca = ca;
+        this.id_empresa = id_empresa;
+        this.loteca = loteca;
+        this.observacaotroca = observacaotroca;
+    }
+
+    public epi(String descricao, String descartavel, String devolver, String validade, String observacao, String codigoCa, String id_empresa, String loteCa, String instrucao) {
+        
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+  
     
-    
+    public int getValidade() {
+        return validade;
+    }
+
+    public void setValidade(int validade) {
+        this.validade = validade;
+    }
+
+    public int getId_empresa() {
+        return id_empresa;
+    }
+
+    public void setId_empresa(int id_empresa) {
+        this.id_empresa = id_empresa;
+    }
+
 
     
     public String getDescricao() {
@@ -64,7 +106,7 @@ private String observacaotroca;
         this.descricao = descricao;
     }
 
-    public boolean isDescartavel() {
+    public boolean getDescartavel() {
         return descartavel;
     }
 
@@ -72,7 +114,7 @@ private String observacaotroca;
         this.descartavel = descartavel;
     }
 
-    public boolean isDevolver() {
+    public boolean getDevolver() {
         return devolver;
     }
 
