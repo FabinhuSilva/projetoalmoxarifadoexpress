@@ -37,7 +37,9 @@ public class menuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblMenuPrincipalimagemFundo = new javax.swing.JLabel();
+        jDesktopPane1 = new javax.swing.JDesktopPane();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jmCadastro = new javax.swing.JMenu();
         jmiCadastroEPI = new javax.swing.JMenuItem();
@@ -62,9 +64,15 @@ public class menuPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("AlmoxarifadoExpress");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 800));
+        jDesktopPane1.getAccessibleContext().setAccessibleName("");
+        jDesktopPane1.getAccessibleContext().setAccessibleDescription("");
 
-        lblMenuPrincipalimagemFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/Captura de tela 2024-10-20 163747.jpg"))); // NOI18N
-        getContentPane().add(lblMenuPrincipalimagemFundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 640));
+        jLabel1.setText("Data e Hora");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 810, 560, 30));
+
+        jLabel2.setText("Usuario Logado");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 806, 560, 30));
 
         jmCadastro.setText("Cadastro");
         jmCadastro.addActionListener(new java.awt.event.ActionListener() {
@@ -175,10 +183,12 @@ public class menuPrincipal extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        pack();
+        setSize(new java.awt.Dimension(1216, 839));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    //getContentPane().add(jDesktopPane);
+    
     private void jmiCadastroEPIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCadastroEPIActionPerformed
         View.Relatorios.relatorioEpi epi = new View.Relatorios.relatorioEpi();
         epi.setVisible(true);
@@ -255,6 +265,9 @@ public class menuPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu MenuTesteFuncoes;
+    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenu jmCadastro;
@@ -274,6 +287,5 @@ public class menuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jmSair;
     private javax.swing.JMenuItem jmiCadastroEPI;
     private javax.swing.JMenuItem jmmImportacaoEstoque;
-    private javax.swing.JLabel lblMenuPrincipalimagemFundo;
     // End of variables declaration//GEN-END:variables
 }

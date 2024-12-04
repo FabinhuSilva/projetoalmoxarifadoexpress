@@ -14,6 +14,8 @@ public class relatorioFuncionario extends javax.swing.JFrame {
     /**
      * Creates new form relatorioFuncionario
      */
+    
+  
     public relatorioFuncionario() {
         initComponents();
     }

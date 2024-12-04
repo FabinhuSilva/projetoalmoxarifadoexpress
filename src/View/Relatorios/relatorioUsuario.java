@@ -147,7 +147,7 @@ public class relatorioUsuario extends javax.swing.JFrame {
 
         botaoSair.setText("Sair");
         botaoSair.setMaximumSize(new java.awt.Dimension(70, 32));
-        getContentPane().add(botaoSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 560, 70, -1));
+        getContentPane().add(botaoSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 540, 70, -1));
 
         botaoConsultar.setText("Consultar");
         botaoConsultar.setPreferredSize(new java.awt.Dimension(80, 32));
@@ -156,7 +156,7 @@ public class relatorioUsuario extends javax.swing.JFrame {
                 botaoConsultarActionPerformed(evt);
             }
         });
-        getContentPane().add(botaoConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 560, 90, -1));
+        getContentPane().add(botaoConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 540, 90, -1));
 
         tabelaUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -168,10 +168,10 @@ public class relatorioUsuario extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tabelaUsuarios);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 800, 460));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 800, 440));
 
         botaoImprimir.setText("Imprimir");
-        getContentPane().add(botaoImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 560, -1, -1));
+        getContentPane().add(botaoImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 540, -1, -1));
 
         jmConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icones/iconeConsultar24px.png"))); // NOI18N
         jMenuBar1.add(jmConsultar);

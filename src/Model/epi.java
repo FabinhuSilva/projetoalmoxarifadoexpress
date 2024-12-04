@@ -23,6 +23,9 @@ private String nomefabricanteca;
 private String loteca;
 private String observacaotroca;
 
+    public epi() {
+    }
+
 
     public epi(int id, String descricao, int validade, boolean descartavel, boolean devolver, String instrucao, int ca, String nomefabricanteca, String loteca, String observacaotroca) {
         this.id = id;
@@ -58,9 +61,15 @@ private String observacaotroca;
         this.observacaotroca = observacaotroca;
     }
 
-    public epi(String descricao, String descartavel, String devolver, String validade, String observacao, String codigoCa, String id_empresa, String loteCa, String instrucao) {
-        
+      public epi(int id, String descricao, int validade, int ca, String loteca) {
+        this.id = id;
+        this.descricao = descricao;
+        this.validade = validade;
+        this.ca = ca;
+        this.loteca = loteca;
     }
+
+ 
 
     public int getId() {
         return id;
@@ -152,6 +161,11 @@ private String observacaotroca;
 
     public void setLoteca(String loteca) {
         this.loteca = loteca;
+    }
+
+    @Override
+    public String toString() {
+        return this.getDescricao(); //To change body of generated methods, choose Tools | Templates.
     }
    
     

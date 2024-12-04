@@ -47,15 +47,17 @@ public class loginController {
         boolean usuarioCadastrado = usuariodao.consultarUsuarioSenhaLogin(usuarioSenhaLogin);
         
         //Se Sim, direcionar para o Menu
+       login menuLogin = new login();
         if(usuarioCadastrado){
        menuPrincipal telademenu  = new menuPrincipal();
+       telademenu.setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
        telademenu.setVisible(true);  
-       login menuLogin = new login();
-       menuLogin.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-        }else{
+       
+             }else{
             // Icones a 32px para caixa de mensagem
             ImageIcon iconeSalvo = new ImageIcon("c:\\almoxarifadoExpress\\icone\\erro.png");
             JOptionPane.showMessageDialog(null," Usuario e Senha invalidos!","Login",JOptionPane.PLAIN_MESSAGE,iconeSalvo );
+         menuLogin.setVisible(true);
         }
     }
 

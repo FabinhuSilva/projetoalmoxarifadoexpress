@@ -34,6 +34,7 @@ public class login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         btConfigurar = new javax.swing.JButton();
         lblLoginVersao = new javax.swing.JLabel();
         jbLoginEntrar = new javax.swing.JButton();
@@ -50,6 +51,20 @@ public class login extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(514, 380));
         setName("TelaLogin"); // NOI18N
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jButton1.setText("SAIR");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 240, 90, -1));
 
         btConfigurar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icones/iconeConfigurar32px.png"))); // NOI18N
         btConfigurar.addActionListener(new java.awt.event.ActionListener() {
@@ -73,7 +88,7 @@ public class login extends javax.swing.JFrame {
                 jbLoginEntrarActionPerformed(evt);
             }
         });
-        getContentPane().add(jbLoginEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 250, 110, -1));
+        getContentPane().add(jbLoginEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, 110, -1));
 
         txtLoginSenha.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         txtLoginSenha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -114,6 +129,8 @@ public class login extends javax.swing.JFrame {
       
         try {
             Controller.autenticarLogin();
+            this.dispose();
+            
         } catch (SQLException ex) {
             System.out.println("Erro Botao Salvar : "+ex);
         }
@@ -125,6 +142,14 @@ public class login extends javax.swing.JFrame {
         banco.setVisible(true);
        //Controller.acessarCadastroBanco();
     }//GEN-LAST:event_btConfigurarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    System.exit(0);
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -164,6 +189,7 @@ public class login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btConfigurar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jbLoginEntrar;
     private javax.swing.JLabel lblLoginFundo;
     private javax.swing.JLabel lblLoginVersao;
