@@ -42,9 +42,11 @@ public class menuPrincipal extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jmCadastro = new javax.swing.JMenu();
-        jmiCadastroEPI = new javax.swing.JMenuItem();
         jmCadastroFuncionario = new javax.swing.JMenuItem();
         jmCadastroEmpresa = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jmiCadastroEPI = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jmCadastroUsuario = new javax.swing.JMenuItem();
         jmOperacao = new javax.swing.JMenu();
         jmOpercaoEntregaEPI = new javax.swing.JMenuItem();
@@ -81,14 +83,6 @@ public class menuPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jmiCadastroEPI.setText("EPI");
-        jmiCadastroEPI.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiCadastroEPIActionPerformed(evt);
-            }
-        });
-        jmCadastro.add(jmiCadastroEPI);
-
         jmCadastroFuncionario.setText("Funcionario");
         jmCadastroFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,6 +103,20 @@ public class menuPrincipal extends javax.swing.JFrame {
             }
         });
         jmCadastro.add(jmCadastroEmpresa);
+
+        jMenuItem3.setText("Setor");
+        jmCadastro.add(jMenuItem3);
+
+        jmiCadastroEPI.setText("EPI");
+        jmiCadastroEPI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiCadastroEPIActionPerformed(evt);
+            }
+        });
+        jmCadastro.add(jmiCadastroEPI);
+
+        jMenuItem2.setText("Setor  e EPI");
+        jmCadastro.add(jMenuItem2);
 
         jmCadastroUsuario.setText("Usuario Sistema");
         jmCadastroUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -270,6 +278,8 @@ public class menuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenu jmCadastro;
     private javax.swing.JMenuItem jmCadastroEmpresa;
     private javax.swing.JMenuItem jmCadastroFuncionario;

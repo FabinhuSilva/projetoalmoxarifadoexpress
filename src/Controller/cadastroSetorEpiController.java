@@ -27,6 +27,7 @@ public class cadastroSetorEpiController {
     Connection conexao = null;
     PreparedStatement pst = null;
     ResultSet rs = null;
+    
        int contador_linha = 0;
        int contador_coluna= 0;
        int quantidade_linha;
@@ -34,7 +35,12 @@ public class cadastroSetorEpiController {
         int codigoSetor = 0;
         int codigoepi = 0;
         int quantidade_epi = 0;
+        
+    private cadastroSetorEpi view;
 
+ Connection conexaoBD = new conexaoBancoController().conectarBanco();
+ PreparedStatement executar = null;
+    
     public int getQuantidade_linha() {
         return quantidade_linha;
     }
@@ -50,18 +56,10 @@ public class cadastroSetorEpiController {
     public void setContador_linha(int contador_linha) {
         this.contador_linha = contador_linha;
     }
-
     
-      
-        
-    private cadastroSetorEpi view;
-
     public cadastroSetorEpiController(cadastroSetorEpi view) {
         this.view = view;
     }
-    
- Connection conexaoBD = new conexaoBancoController().conectarBanco();
- PreparedStatement executar = null;
     
     
       public void inserirSetorEpiBanco() throws SQLException {
@@ -81,9 +79,9 @@ public class cadastroSetorEpiController {
             }while(getQuantidade_linha() > getContador_linha());
              setQuantidade_linha(0);
              setContador_linha(0);
-            // Icones a 32px para caixa de mensagem
+             // Icones a 32px para caixa de mensagem
             ImageIcon iconeSalvo = new ImageIcon("c:\\almoxarifadoExpress\\icone\\salvar.png");
-            JOptionPane.showMessageDialog(null, " Usuario salvo com Sucesso!", "Cadastro de Usuario", JOptionPane.PLAIN_MESSAGE, iconeSalvo);
+            JOptionPane.showMessageDialog(null, " Salvo com Sucesso! ", "Constulta de Setor e EPI", JOptionPane.PLAIN_MESSAGE, iconeSalvo);   
           
       }
     
@@ -114,9 +112,7 @@ public class cadastroSetorEpiController {
                 }
 
    }   
-      
-      
-      
+          
    public void  buscarnomeEpi(){
               
     //---------------------------------------- Testaando ourta forma
@@ -238,7 +234,7 @@ public class cadastroSetorEpiController {
             //rs=executar.executeQuery();
             
             //a linha abixo vai usar a rs2XML.jar para preencher a Tabela
-            // view.getListaEpiAdicionados().setModel(DbUtils.resultSetToTableModel(rs));
+            //view.getListaEpiAdicionados().setModel(DbUtils.resultSetToTableModel(rs));
            
        } catch (SQLException erro) {
            JOptionPane.showMessageDialog(null, "Erro ao Excluir Lista Anterior (método LIMPARBANCEPISETOR) : " + erro, "CSEC - Consulta de SETOREPI", JOptionPane.ERROR_MESSAGE);
@@ -256,7 +252,8 @@ public class cadastroSetorEpiController {
        } 
            
    
-       }
+    }
+       
        
  }
 

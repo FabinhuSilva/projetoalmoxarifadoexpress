@@ -6,7 +6,7 @@
 package View.Relatorios;
 
 import javax.swing.JTable;
-import Controller.RelatorioController;
+import Controller.RelatorioSetorController;
 import Controller.cadastroUsuarioCcontroller;
 import Controller.conexaoBancoController;
 import Model.DAO.Relatorio.relatorioConsultaUsuario;

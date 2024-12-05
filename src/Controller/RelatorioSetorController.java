@@ -27,16 +27,16 @@ import javax.swing.ListSelectionModel;
     * 
  * @author Fabinhu
  */
-public class RelatorioController {
+public class RelatorioSetorController {
     
   private Connection conBanco;
 
-    public RelatorioController() {
+    public RelatorioSetorController() {
         
     }
 
     /*
-    public RelatorioController(Connection conBanco) {
+    public RelatorioSetorController(Connection conBanco) {
         this.conBanco = conBanco;
     }*/
  

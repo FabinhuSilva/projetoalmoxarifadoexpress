@@ -5,6 +5,15 @@
  */
 package View.Relatorios;
 
+import Controller.RelatorioSetorEpiController;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JList;
+import javax.swing.JMenu;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Fabinhu
@@ -14,8 +23,26 @@ public class relatorioSetorEpi extends javax.swing.JFrame {
     /**
      * Creates new form relatorioSetorEpi
      */
+    
+     private RelatorioSetorEpiController controller;
+    
     public relatorioSetorEpi() {
         initComponents();
+        controller = new RelatorioSetorEpiController(this);
+        /*nao mostrar o cabeçalho da tabela 
+        
+           Neste Exemplo, ele oculta mas fica a linha cinza
+        getTabelaSetoresConsulta().getTableHeader().setVisible(false);
+        
+            Ja neste Exemplo, ele oculca inclusive a linha cinza
+        getTabelaSetoresConsulta().getTableHeader().setUI(null);
+        */
+        getTabelaSetoresConsulta().getTableHeader().setUI(null);
+        getBotaSALVAR().setEnabled(false);
+        botaoCONSULTAR.setEnabled(false);
+        consultaTelaRelatorio.setEnabled(false);
+        botaoEXCLUIR.setEnabled(false);
+     
     }
 
     /**
@@ -29,30 +56,52 @@ public class relatorioSetorEpi extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tabelaSetoresConsulta = new javax.swing.JTable();
+        consultaSetorRelatorio = new javax.swing.JTextField();
+        consultaTelaRelatorio = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        codigoSetorconsulta = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        nomeSetorConsulta = new javax.swing.JTextField();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabelaSetorEpiRelatorio = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jmConsultar = new javax.swing.JMenu();
-        jMenu1 = new javax.swing.JMenu();
-        SALVAR = new javax.swing.JMenu();
-        jmIncluir = new javax.swing.JMenu();
+        botaoCONSULTAR = new javax.swing.JMenu();
+        botaoEXCLUIR = new javax.swing.JMenu();
+        botaSALVAR = new javax.swing.JMenu();
+        botaoINCLUIR = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Consultar Setor/EPI");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabel1.setText("jLabel1");
+        jLabel1.setText("Setor");
 
-        jTextField1.setText("jTextField1");
+        tabelaSetoresConsulta.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
-        jLabel2.setText("jLabel1");
+            },
+            new String [] {
 
-        jTextField2.setText("jTextField1");
+            }
+        ));
+        tabelaSetoresConsulta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaSetoresConsultaMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(tabelaSetoresConsulta);
+
+        consultaSetorRelatorio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                consultaSetorRelatorioKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -61,27 +110,69 @@ public class relatorioSetorEpi extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE)
+                    .addComponent(consultaSetorRelatorio))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(consultaSetorRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        consultaTelaRelatorio.setText("Consultar");
+        consultaTelaRelatorio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                consultaTelaRelatorioMouseClicked(evt);
+            }
+        });
+
+        jButton2.setText("Sair");
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel2.setText("Codigo");
+
+        jLabel3.setText("Setor");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(codigoSetorconsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(nomeSetorConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(codigoSetorconsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(nomeSetorConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(8, Short.MAX_VALUE))
+        );
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        tabelaSetorEpiRelatorio.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -92,33 +183,56 @@ public class relatorioSetorEpi extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabelaSetorEpiRelatorio);
 
-        jButton1.setText("jButton1");
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(9, Short.MAX_VALUE))
+        );
 
-        jButton2.setText("jButton1");
-
-        jmConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icones/iconeConsultar24px.png"))); // NOI18N
-        jMenuBar1.add(jmConsultar);
-
-        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icones/iconeExcluir32px.png"))); // NOI18N
-        jMenuBar1.add(jMenu1);
-
-        SALVAR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icones/iconeSalvar24px.png"))); // NOI18N
-        jMenuBar1.add(SALVAR);
-
-        jmIncluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icones/iconeNovo24px.png"))); // NOI18N
-        jmIncluir.addMouseListener(new java.awt.event.MouseAdapter() {
+        botaoCONSULTAR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icones/iconeConsultar24px.png"))); // NOI18N
+        botaoCONSULTAR.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jmIncluirMouseClicked(evt);
+                botaoCONSULTARMouseClicked(evt);
             }
         });
-        jmIncluir.addActionListener(new java.awt.event.ActionListener() {
+        jMenuBar1.add(botaoCONSULTAR);
+
+        botaoEXCLUIR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icones/iconeExcluir32px.png"))); // NOI18N
+        botaoEXCLUIR.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botaoEXCLUIRMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(botaoEXCLUIR);
+
+        botaSALVAR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icones/iconeSalvar24px.png"))); // NOI18N
+        jMenuBar1.add(botaSALVAR);
+
+        botaoINCLUIR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icones/iconeNovo24px.png"))); // NOI18N
+        botaoINCLUIR.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botaoINCLUIRMouseClicked(evt);
+            }
+        });
+        botaoINCLUIR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmIncluirActionPerformed(evt);
+                botaoINCLUIRActionPerformed(evt);
             }
         });
-        jMenuBar1.add(jmIncluir);
+        jMenuBar1.add(botaoINCLUIR);
 
         setJMenuBar(jMenuBar1);
 
@@ -127,54 +241,93 @@ public class relatorioSetorEpi extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(consultaTelaRelatorio)
+                        .addGap(30, 30, 30)
+                        .addComponent(jButton2)
+                        .addContainerGap())))
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(30, 30, 30)
-                .addComponent(jButton2)
-                .addGap(59, 59, 59))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(consultaTelaRelatorio)
                     .addComponent(jButton2))
-                .addContainerGap(248, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jmIncluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmIncluirMouseClicked
-        View.cadastroSetor setor = new View.cadastroSetor();
-        setor.setVisible(true);
-    }//GEN-LAST:event_jmIncluirMouseClicked
+    private void botaoINCLUIRMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoINCLUIRMouseClicked
+         try {
+             View.cadastroSetorEpi cadSetorEpi = new View.cadastroSetorEpi();
+             cadSetorEpi.setVisible(true);
+         } catch (SQLException ex) {
+             Logger.getLogger(relatorioSetorEpi.class.getName()).log(Level.SEVERE, null, ex);
+         }
+    
+    }//GEN-LAST:event_botaoINCLUIRMouseClicked
 
-    private void jmIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmIncluirActionPerformed
+    private void botaoINCLUIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoINCLUIRActionPerformed
 
-    }//GEN-LAST:event_jmIncluirActionPerformed
+    }//GEN-LAST:event_botaoINCLUIRActionPerformed
+
+    private void botaoCONSULTARMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoCONSULTARMouseClicked
+        controller.carregarSetorEpi();
+    }//GEN-LAST:event_botaoCONSULTARMouseClicked
+
+    private void consultaTelaRelatorioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_consultaTelaRelatorioMouseClicked
+        controller.carregarSetorEpi();
+    }//GEN-LAST:event_consultaTelaRelatorioMouseClicked
+
+    private void consultaSetorRelatorioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_consultaSetorRelatorioKeyReleased
+        try {
+            controller.consultarSetorRelatorio();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+ 
+    }//GEN-LAST:event_consultaSetorRelatorioKeyReleased
+
+    private void tabelaSetoresConsultaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaSetoresConsultaMouseClicked
+        controller.preencherCamposSetor();
+           botaoCONSULTAR.setEnabled(true);
+        consultaTelaRelatorio.setEnabled(true);
+        botaoEXCLUIR.setEnabled(true);
+    }//GEN-LAST:event_tabelaSetoresConsultaMouseClicked
+
+    private void botaoEXCLUIRMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoEXCLUIRMouseClicked
+        controller.excluirSetorEPI();
+    }//GEN-LAST:event_botaoEXCLUIRMouseClicked
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+   /* public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
+      /*  try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -193,27 +346,84 @@ public class relatorioSetorEpi extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
+     /*   java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new relatorioSetorEpi().setVisible(true);
             }
         });
-    }
+    }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu SALVAR;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JMenu botaSALVAR;
+    private javax.swing.JMenu botaoCONSULTAR;
+    private javax.swing.JMenu botaoEXCLUIR;
+    private javax.swing.JMenu botaoINCLUIR;
+    private javax.swing.JTextField codigoSetorconsulta;
+    private javax.swing.JTextField consultaSetorRelatorio;
+    private javax.swing.JButton consultaTelaRelatorio;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JMenu jMenu1;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JMenu jmConsultar;
-    private javax.swing.JMenu jmIncluir;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextField nomeSetorConsulta;
+    private javax.swing.JTable tabelaSetorEpiRelatorio;
+    private javax.swing.JTable tabelaSetoresConsulta;
     // End of variables declaration//GEN-END:variables
+
+    public JMenu getBotaSALVAR() {
+        return botaSALVAR;
+    }
+
+    public void setBotaSALVAR(JMenu botaSALVAR) {
+        this.botaSALVAR = botaSALVAR;
+    }
+
+    public JTable getTabelaSetoresConsulta() {
+        return tabelaSetoresConsulta;
+    }
+
+    public void setTabelaSetoresConsulta(JTable tabelaSetoresConsulta) {
+        this.tabelaSetoresConsulta = tabelaSetoresConsulta;
+    }
+
+    public JTextField getConsultaSetorRelatorio() {
+        return consultaSetorRelatorio;
+    }
+
+    public void setConsultaSetorRelatorio(JTextField consultaSetorRelatorio) {
+        this.consultaSetorRelatorio = consultaSetorRelatorio;
+    }
+
+    public JTextField getCodigoSetorconsulta() {
+        return codigoSetorconsulta;
+    }
+
+    public void setCodigoSetorconsulta(JTextField codigoSetorconsulta) {
+        this.codigoSetorconsulta = codigoSetorconsulta;
+    }
+
+    public JTextField getNomeSetorConsulta() {
+        return nomeSetorConsulta;
+    }
+
+    public void setNomeSetorConsulta(JTextField nomeSetorConsulta) {
+        this.nomeSetorConsulta = nomeSetorConsulta;
+    }
+
+    public JTable getTabelaSetorEpiRelatorio() {
+        return tabelaSetorEpiRelatorio;
+    }
+
+    public void setTabelaSetorEpiRelatorio(JTable tabelaSetorEpiRelatorio) {
+        this.tabelaSetorEpiRelatorio = tabelaSetorEpiRelatorio;
+    }
+
+   
+    
 }
