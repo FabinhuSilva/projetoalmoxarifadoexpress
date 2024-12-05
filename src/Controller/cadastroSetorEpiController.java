@@ -29,11 +29,19 @@ public class cadastroSetorEpiController {
     ResultSet rs = null;
        int contador_linha = 0;
        int contador_coluna= 0;
-       
+       int quantidade_linha;
           
         int codigoSetor = 0;
         int codigoepi = 0;
         int quantidade_epi = 0;
+
+    public int getQuantidade_linha() {
+        return quantidade_linha;
+    }
+
+    public void setQuantidade_linha(int quantidade_linha) {
+        this.quantidade_linha = quantidade_linha;
+    }
 
     public int getContador_linha() {
         return contador_linha;
@@ -42,8 +50,9 @@ public class cadastroSetorEpiController {
     public void setContador_linha(int contador_linha) {
         this.contador_linha = contador_linha;
     }
+
     
-        
+      
         
     private cadastroSetorEpi view;
 
@@ -56,9 +65,9 @@ public class cadastroSetorEpiController {
     
     
       public void inserirSetorEpiBanco() throws SQLException {
-          
-       
         
+          limparBancoEPISetor();
+          
             do{ 
         
                 try{
@@ -69,8 +78,9 @@ public class cadastroSetorEpiController {
                 ImageIcon iconeSalvo = new ImageIcon("c:\\almoxarifadoExpress\\icone\\erro.png");
                 JOptionPane.showMessageDialog(null, " Erro ao Salvar Setor e EPI: !"+erro, "Cadastro de Setor e EPI", JOptionPane.PLAIN_MESSAGE, iconeSalvo);  
                 }        
-            }while(quantidade_linha > getContador_linha());
-            
+            }while(getQuantidade_linha() > getContador_linha());
+             setQuantidade_linha(0);
+             setContador_linha(0);
             // Icones a 32px para caixa de mensagem
             ImageIcon iconeSalvo = new ImageIcon("c:\\almoxarifadoExpress\\icone\\salvar.png");
             JOptionPane.showMessageDialog(null, " Usuario salvo com Sucesso!", "Cadastro de Usuario", JOptionPane.PLAIN_MESSAGE, iconeSalvo);
@@ -78,9 +88,9 @@ public class cadastroSetorEpiController {
       }
     
    public void salvarSetorEpiBanco(){
-       int quantidade_linha = view.getListaEpiAdicionados().getRowCount();
        
          try{
+         setQuantidade_linha(view.getListaEpiAdicionados().getRowCount());// = view.getListaEpiAdicionados().getRowCount();
          codigoSetor = Integer.parseInt((String)view.getCodigoSetor().getText());
          codigoepi=Integer.parseInt((String) view.getListaEpiAdicionados().getValueAt​( getContador_linha(), 0));
          quantidade_epi=Integer.parseInt((String) view.getListaEpiAdicionados().getValueAt​( getContador_linha(), 2));
@@ -96,8 +106,8 @@ public class cadastroSetorEpiController {
        
             executar.execute();
 
-           setContador_linha(contador_linha++);
-            contador_coluna++;
+           setContador_linha(getContador_linha()+1);
+           //contador_coluna++;
                 }catch(SQLException erro){
                 ImageIcon iconeSalvo = new ImageIcon("c:\\almoxarifadoExpress\\icone\\erro.png");
                 JOptionPane.showMessageDialog(null, " Erro ao Salvar Setor e EPI: !"+erro, "Cadastro de Setor e EPI", JOptionPane.PLAIN_MESSAGE, iconeSalvo);  
@@ -186,4 +196,67 @@ public class cadastroSetorEpiController {
        DefaultTableModel dtm = (DefaultTableModel) view.getListaEpiAdicionados().getModel();
        dtm.removeRow(view.getListaEpiAdicionados().getSelectedRow());
        }
-}
+       
+       
+       public void listarEPISetor(){
+           
+                 String sql = "SELECT  setorepi.id_epi, e.descricao, setorepi.qtd_epi,e.validade,e.codigoca,e.loteca FROM setorepi INNER JOIN epi e ON setorepi.id_epi = e.id WHERE setorepi.id_setor = ?  ";
+                 
+       
+       try {
+           
+           int codigoSetor = Integer.valueOf(view.getCodigoSetor().getText()).intValue();
+           
+            executar = conexaoBD.prepareStatement(sql);    
+            
+            //O trecho abaixo troca o ? pelo conteudo da caixa
+            executar.setInt(1, codigoSetor);
+            rs=executar.executeQuery();
+            
+            //a linha abixo vai usar a rs2XML.jar para preencher a Tabela
+            view.getListaEpiAdicionados().setModel(DbUtils.resultSetToTableModel(rs));
+           
+       } catch (SQLException erro) {
+           JOptionPane.showMessageDialog(null, "Erro ao Carregar EPI (método RESULTADO) : " + erro, "CSEC - Consulta de SETOR", JOptionPane.ERROR_MESSAGE);
+       }
+       
+            }
+       
+       public void limparBancoEPISetor(){
+           
+                            String sql = "DELETE FROM setorepi WHERE id_setor = ?  ";
+       
+       try {
+           
+           int codigoSetor = Integer.valueOf(view.getCodigoSetor().getText()).intValue();
+           
+            executar = conexaoBD.prepareStatement(sql);    
+            
+            //O trecho abaixo troca o ? pelo conteudo da caixa
+            executar.setInt(1, codigoSetor);
+            executar.execute();
+            //rs=executar.executeQuery();
+            
+            //a linha abixo vai usar a rs2XML.jar para preencher a Tabela
+            // view.getListaEpiAdicionados().setModel(DbUtils.resultSetToTableModel(rs));
+           
+       } catch (SQLException erro) {
+           JOptionPane.showMessageDialog(null, "Erro ao Excluir Lista Anterior (método LIMPARBANCEPISETOR) : " + erro, "CSEC - Consulta de SETOREPI", JOptionPane.ERROR_MESSAGE);
+       }
+           
+       }
+       
+       
+       public void limparTabelaEpi(){
+           
+            JOptionPane.showMessageDialog(null, "Atenção! Caso salve após Limpar a Lista de EPIs, sera REMOVIDO todos os EPI deste Setor!", "Limpar Lista de EPI", JOptionPane.ERROR_MESSAGE);
+           
+           while (view.getListaEpiAdicionados().getModel().getRowCount() > 0) {  
+           ((DefaultTableModel) view.getListaEpiAdicionados().getModel()).removeRow(0);  
+       } 
+           
+   
+       }
+       
+ }
+

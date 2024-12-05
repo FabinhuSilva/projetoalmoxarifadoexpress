@@ -83,6 +83,7 @@ public class cadastroSetorEpi extends javax.swing.JFrame {
         listaEpiAdicionados = new javax.swing.JTable();
         botaoExcluirEpi = new javax.swing.JButton();
         botaoCarregarEpi = new javax.swing.JButton();
+        botaoLimparTabela = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -335,6 +336,18 @@ public class cadastroSetorEpi extends javax.swing.JFrame {
         });
 
         botaoCarregarEpi.setText("Listar EPIs ");
+        botaoCarregarEpi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botaoCarregarEpiMouseClicked(evt);
+            }
+        });
+
+        botaoLimparTabela.setText("LimparLista");
+        botaoLimparTabela.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botaoLimparTabelaMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -343,18 +356,19 @@ public class cadastroSetorEpi extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(187, 187, 187)
-                                .addComponent(botaoCarregarEpi))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 1, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addContainerGap()
+                        .addComponent(botaoLimparTabela)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(botaoExcluirEpi)))
                 .addContainerGap())
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(180, 180, 180)
+                .addComponent(botaoCarregarEpi)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -364,7 +378,9 @@ public class cadastroSetorEpi extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(botaoExcluirEpi)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botaoExcluirEpi)
+                    .addComponent(botaoLimparTabela))
                 .addContainerGap())
         );
 
@@ -414,6 +430,14 @@ public class cadastroSetorEpi extends javax.swing.JFrame {
        controller.excluirEpi();
     }//GEN-LAST:event_botaoExcluirEpiMouseClicked
 
+    private void botaoCarregarEpiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoCarregarEpiMouseClicked
+        controller.listarEPISetor();
+    }//GEN-LAST:event_botaoCarregarEpiMouseClicked
+
+    private void botaoLimparTabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoLimparTabelaMouseClicked
+        controller.limparTabelaEpi();
+    }//GEN-LAST:event_botaoLimparTabelaMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -458,6 +482,7 @@ public class cadastroSetorEpi extends javax.swing.JFrame {
     private javax.swing.JButton botaoCancelarSetorEpi;
     private javax.swing.JButton botaoCarregarEpi;
     private javax.swing.JButton botaoExcluirEpi;
+    private javax.swing.JButton botaoLimparTabela;
     private javax.swing.JButton botaoSalvarSetorEpi;
     private javax.swing.JTextField caEpi;
     private javax.swing.JTextField codigoEpi;
