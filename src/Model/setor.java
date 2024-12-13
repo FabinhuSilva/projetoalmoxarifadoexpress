@@ -14,6 +14,7 @@ public class setor {
     private int id;
     private String descricao;
     private int epiLiberados;
+    private String riscoSetor;
 
     public setor(int id, String descricao, int epiLiberados) {
         this.id = id;
@@ -21,6 +22,19 @@ public class setor {
         this.epiLiberados = epiLiberados;
         
     }
+
+    public setor() {
+    }
+
+    public String getRiscoSetor() {
+        return riscoSetor;
+    }
+
+    public void setRiscoSetor(String riscoSetor) {
+        this.riscoSetor = riscoSetor;
+    }
+    
+    
 
     public int getId() {
         return id;

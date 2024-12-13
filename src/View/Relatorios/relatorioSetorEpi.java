@@ -75,7 +75,7 @@ public class relatorioSetorEpi extends javax.swing.JFrame {
         botaSALVAR = new javax.swing.JMenu();
         botaoINCLUIR = new javax.swing.JMenu();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Consultar Setor/EPI");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -274,6 +274,7 @@ public class relatorioSetorEpi extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoINCLUIRMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoINCLUIRMouseClicked
@@ -309,7 +310,7 @@ public class relatorioSetorEpi extends javax.swing.JFrame {
 
     private void tabelaSetoresConsultaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaSetoresConsultaMouseClicked
         controller.preencherCamposSetor();
-           botaoCONSULTAR.setEnabled(true);
+        botaoCONSULTAR.setEnabled(true);
         consultaTelaRelatorio.setEnabled(true);
         botaoEXCLUIR.setEnabled(true);
     }//GEN-LAST:event_tabelaSetoresConsultaMouseClicked
@@ -318,10 +319,10 @@ public class relatorioSetorEpi extends javax.swing.JFrame {
         controller.excluirSetorEPI();
     }//GEN-LAST:event_botaoEXCLUIRMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
-   /* public static void main(String args[]) {
+    
+     
+     /*
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -345,8 +346,8 @@ public class relatorioSetorEpi extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
-     /*   java.awt.EventQueue.invokeLater(new Runnable() {
+       /* /* Create and display the form */
+        /*java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new relatorioSetorEpi().setVisible(true);
             }

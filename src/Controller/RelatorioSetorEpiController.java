@@ -12,7 +12,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import javax.swing.ListModel;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -42,7 +41,7 @@ public class RelatorioSetorEpiController {
       
       
        String sql = "SELECT * FROM setor WHERE nome LIKE ? ";
-        //String sql = "SELECT  setorepi.id_epi, e.descricao, setorepi.qtd_epi,e.validade,e.codigoca,e.loteca FROM setorepi INNER JOIN epi e ON setorepi.id_epi = e.id WHERE setorepi.id_setor = ?  ";
+
 String nomeColuna = "";       
        try {
             executar = conexaoBD.prepareStatement(sql);    

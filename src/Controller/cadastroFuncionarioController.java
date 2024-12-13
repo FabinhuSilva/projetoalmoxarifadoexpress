@@ -6,13 +6,14 @@
 package Controller;
 
 import View.cadastroFuncionario;
-import java.beans.Statement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import net.proteanit.sql.DbUtils;
+
 
 
 /**
@@ -26,8 +27,10 @@ public class cadastroFuncionarioController {
         Connection conexao = null;
         PreparedStatement pst = null;
         ResultSet rs = null;
+        PreparedStatement executar = null;
         
-        
+            Connection conexaoBD = new conexaoBancoController().conectarBanco();
+     
         
     public cadastroFuncionarioController(cadastroFuncionario view) {
         this.view = view;
@@ -46,10 +49,8 @@ public class cadastroFuncionarioController {
         String observacaoFuncionario = view.getObservacaoFuncionario().getText();                        
                
         try {
-        Connection conexaoBD = new conexaoBancoController().conectarBanco();        
-        String sql = "INSERT INTO funcionario(nome,cpf,rg,id_empresa, id_situacaocadastro,chapa,observacao) VALUES (?, ?, ?, ?, ?, ?, ?);";
-                          
-
+              
+        String sql = "INSERT INTO funcionario(nome,cpf,rg,id_empresa, id_situacaocadastro,chapa,observacao) VALUES (?, ?, ?, ?, ?, ?, ?);";                  
 
             PreparedStatement executar = null;
             executar = conexaoBD.prepareStatement(sql, executar.RETURN_GENERATED_KEYS);
@@ -132,6 +133,76 @@ public void consultarEmpresa() throws SQLException{
 
               
 }
+
+public void bloquearCampos(){
+    //Cadastro de funcionario
+        view.getIdFuncionario().setEditable(false);
+        
+    
+    //Cadastro de Empresa
+        view.getIdEmpresaFuncionario().setEditable(false);
+        view.getNomeEmpresaFuncionario().setEditable(false);
+        view.getEnderecoEmpresaFuncionario().setEditable(false);
+        view.getBotaoPesquisarEmpresa().setEnabled(false);
+        
+     //cadastro Setor
+        view.getCodSetorFuncionario().setEditable(false);
+        view.getDescSetorFuncionario().setEditable(false);
+    
+    /*RemoverGrid de Tabela
+    Lembrando que esta linha tem que ser dada no JScrool Pane da Tabela
+    */
+        view.getPaneSetor().setColumnHeader(null);
+    
+        
+     
+     //excessoes do Cadastro
+     
+    
+     
+        
+}
+
+
+public void consultarSetorFuncionario(){
+      
+       String sql = "SELECT id,nome,riscosetor FROM setor WHERE nome LIKE ? AND id_situacaocadastro = 0";
+             
+       try {
+            executar = conexaoBD.prepareStatement(sql);    
+           
+            //O trecho abaixo troca o ? pelo conteudo da caixa
+            executar.setString(1, view.getConsultaSetorFuncionario().getText()+"%");
+            rs=executar.executeQuery();
+            
+        //a linha abixo vai usar a rs2XML.jar para preencher a Tabela
+          view.getTabelaConsultaSetor().setModel(DbUtils.resultSetToTableModel(rs));            
+            
+         //Retorno da consulta
+       
+       } catch (SQLException erro) {
+            // Icones a 32px para caixa de mensagem
+                ImageIcon iconeSalvo = new ImageIcon("c:\\almoxarifadoExpress\\icone\\erro.png");
+                JOptionPane.showMessageDialog(null," Erro na Consutla deste SETOR \n Erro:  !"+erro,"Cadastro de Usuario",JOptionPane.PLAIN_MESSAGE,iconeSalvo );
+       }
+   }
+
+      public void CodigoSetor(){
+         
+        int setar = view.getTabelaConsultaSetor().getSelectedRow();
+        
+        String codSetor = Integer.toString((int) view.getTabelaConsultaSetor().getModel().getValueAt(setar, 0));
+        String descricaoSetor = (String) view.getTabelaConsultaSetor().getModel().getValueAt(setar, 1);
+        
+          System.out.println(codSetor +"-"+ descricaoSetor);
+        
+        view.getCodSetorFuncionario().setText(Integer.toString((int) view.getTabelaConsultaSetor().getModel().getValueAt(setar, 0)));
+        view.getDescSetorFuncionario().setText((String) view.getTabelaConsultaSetor().getModel().getValueAt(setar, 1));
+        
+        
+      }
+         
+          
 }
 
     

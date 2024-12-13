@@ -46,8 +46,9 @@ public class menuPrincipal extends javax.swing.JFrame {
         jmCadastroEmpresa = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jmiCadastroEPI = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
         jmCadastroUsuario = new javax.swing.JMenuItem();
+        menuEPISetor = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jmOperacao = new javax.swing.JMenu();
         jmOpercaoEntregaEPI = new javax.swing.JMenuItem();
         jmOperacaoAjusteEstoque = new javax.swing.JMenuItem();
@@ -77,6 +78,11 @@ public class menuPrincipal extends javax.swing.JFrame {
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 806, 560, 30));
 
         jmCadastro.setText("Cadastro");
+        jmCadastro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jmCadastroMouseClicked(evt);
+            }
+        });
         jmCadastro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmCadastroActionPerformed(evt);
@@ -115,9 +121,6 @@ public class menuPrincipal extends javax.swing.JFrame {
         });
         jmCadastro.add(jmiCadastroEPI);
 
-        jMenuItem2.setText("Setor  e EPI");
-        jmCadastro.add(jMenuItem2);
-
         jmCadastroUsuario.setText("Usuario Sistema");
         jmCadastroUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,6 +128,22 @@ public class menuPrincipal extends javax.swing.JFrame {
             }
         });
         jmCadastro.add(jmCadastroUsuario);
+
+        menuEPISetor.setText("EPI por Setor");
+        menuEPISetor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuEPISetorMouseClicked(evt);
+            }
+        });
+        menuEPISetor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuEPISetorActionPerformed(evt);
+            }
+        });
+        jmCadastro.add(menuEPISetor);
+
+        jMenuItem2.setText("Exceção EPI");
+        jmCadastro.add(jMenuItem2);
 
         jMenuBar1.add(jmCadastro);
 
@@ -252,13 +271,14 @@ public class menuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jmCadastroFuncionarioActionPerformed
 
     private void jmCadastroEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCadastroEmpresaActionPerformed
-         View.Relatorios.relatorioEmpresa empresa = new View.Relatorios.relatorioEmpresa();
+        View.Relatorios.relatorioEmpresa empresa = new View.Relatorios.relatorioEmpresa();
         empresa.setVisible(true);
+
     }//GEN-LAST:event_jmCadastroEmpresaActionPerformed
 
     private void jmCadastroUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCadastroUsuarioActionPerformed
-        View.Relatorios.relatorioUsuario usuario = new View.Relatorios.relatorioUsuario();
-        usuario.setVisible(true);
+        View.Relatorios.relatorioUsuario menuUsuario = new View.Relatorios.relatorioUsuario();
+        menuUsuario.setVisible(true);
     }//GEN-LAST:event_jmCadastroUsuarioActionPerformed
 
     private void jmCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCadastroActionPerformed
@@ -266,9 +286,22 @@ public class menuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jmCadastroActionPerformed
 
     private void jmCadastroEmpresaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmCadastroEmpresaMouseClicked
-        View.Relatorios.relatorioEmpresa empresa = new View.Relatorios.relatorioEmpresa();
-        empresa.setVisible(true);
+        View.Relatorios.relatorioEmpresa menuEmpresa = new View.Relatorios.relatorioEmpresa();
+        menuEmpresa.setVisible(true);
     }//GEN-LAST:event_jmCadastroEmpresaMouseClicked
+
+    private void jmCadastroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmCadastroMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jmCadastroMouseClicked
+
+    private void menuEPISetorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuEPISetorMouseClicked
+  
+    }//GEN-LAST:event_menuEPISetorMouseClicked
+
+    private void menuEPISetorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEPISetorActionPerformed
+        View.Relatorios.relatorioSetorEpi menuSetorEPI = new View.Relatorios.relatorioSetorEpi();
+        menuSetorEPI.setVisible(true);
+    }//GEN-LAST:event_menuEPISetorActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -297,5 +330,6 @@ public class menuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jmSair;
     private javax.swing.JMenuItem jmiCadastroEPI;
     private javax.swing.JMenuItem jmmImportacaoEstoque;
+    private javax.swing.JMenuItem menuEPISetor;
     // End of variables declaration//GEN-END:variables
 }
