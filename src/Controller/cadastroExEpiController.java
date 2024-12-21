@@ -95,6 +95,9 @@ public class cadastroExEpiController {
          view.getRgFuncionarioEx().setEditable(false);
          view.getEmpresaFuncionarioEx().setEditable(false);
          view.getObservacaoFuncionarioEx().setEditable(false);
+         view.getOcultoIdEpi().setEditable(false);
+         view.getNomeSetorFuncEx().setEditable(false);
+         
          
       
      }
@@ -257,7 +260,7 @@ public class cadastroExEpiController {
   int codSetorex = Integer.parseInt(view.getCodFuncionarioEx().getText());
           
           
-           String sql = "SELECT epi.descricao, ex.qtd_epi FROM epiexcecao ex INNER JOIN epi on epi.id = ex.id_epi WHERE ex.id_funcionario = ?";
+           String sql = "SELECT epi.id,epi.descricao, ex.qtd_epi FROM epiexcecao ex INNER JOIN epi on epi.id = ex.id_epi WHERE ex.id_funcionario = ?";
              
        try {
     
@@ -338,23 +341,23 @@ public class cadastroExEpiController {
            
        }
     
-    public void salvarSetorEpiBanco(){
+    public void salvarSetorEpiexBanco(){
        
          try{
          setQuantidade_linha(view.getTabelaEpiSetorFuncionarioEx().getRowCount());// = view.getListaEpiAdicionados().getRowCount();
          
-         /*
-         int codigoSetor = Integer.parseInt((String)view.getOcultoSetorIdEx().getText());
-         int codigoepi=Integer.parseInt((String) view.getListaEpiAdicionados().getValueAt​( getContador_linha(), 0));
-         quantidade_epi=Integer.parseInt((String) view.getListaEpiAdicionados().getValueAt​( getContador_linha(), 2));
-           */
          
          int valor_id_epi = 0;
          int valor_qtd_epi = 0;
-         int id_funcionario = 0;
+         int id_funcionario = Integer.parseInt(view.getCodFuncionarioEx().getText());
+         
+         
+         valor_id_epi =(int)(view.getTabelaEpiSetorFuncionarioEx().getValueAt​( getContador_linha(), 0));
+         valor_qtd_epi=(int)(view.getTabelaEpiSetorFuncionarioEx().getValueAt​( getContador_linha(), 2));
+         
          
              //Banco de Dados
-            String sql = "INSERT INTO setorepi(id_setor,id_epi,qtd_epi) VALUES (?, ?,?);";
+            String sql = "INSERT INTO epiexcecao(id_epi,qtd_epi,id_funcionario) VALUES (?, ?,?);";
             PreparedStatement executar = null;
             executar = conexaoBD.prepareStatement(sql);
 
@@ -382,7 +385,7 @@ public class cadastroExEpiController {
         
                 try{
                     
-             salvarSetorEpiBanco();       
+             salvarSetorEpiexBanco();       
                                
                 }catch(Exception erro){
                 ImageIcon iconeSalvo = new ImageIcon("c:\\almoxarifadoExpress\\icone\\erro.png");

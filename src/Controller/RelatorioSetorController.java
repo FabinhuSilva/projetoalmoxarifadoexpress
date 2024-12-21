@@ -174,10 +174,9 @@ public class RelatorioSetorController {
        try {
         
             String sql = "UPDATE setor SET id_situacaoCadastro = 1 where id = '"+convertCodigoSetor+"'";
-            //String sql = "UPDATE setor SET id_situacaoCadastro = 1 where id = ?";
+      
              executar = conexaoBD.prepareStatement(sql);                
-            //executar.execute(sql);
-           // executar.setString(1,view.getCodigoSetor().getText());
+
             executar.execute();
             
         ImageIcon iconeSalvo = new ImageIcon("c:\\almoxarifadoExpress\\icone\\salvar.png");

@@ -153,13 +153,6 @@ public void bloquearCampos(){
     Lembrando que esta linha tem que ser dada no JScrool Pane da Tabela
     */
         view.getPaneSetor().setColumnHeader(null);
-    
-        
-     
-     //excessoes do Cadastro
-     
-    
-     
         
 }
 
@@ -178,7 +171,7 @@ public void consultarSetorFuncionario(){
         //a linha abixo vai usar a rs2XML.jar para preencher a Tabela
           view.getTabelaConsultaSetor().setModel(DbUtils.resultSetToTableModel(rs));            
             
-         //Retorno da consulta
+         
        
        } catch (SQLException erro) {
             // Icones a 32px para caixa de mensagem
@@ -194,14 +187,41 @@ public void consultarSetorFuncionario(){
         String codSetor = Integer.toString((int) view.getTabelaConsultaSetor().getModel().getValueAt(setar, 0));
         String descricaoSetor = (String) view.getTabelaConsultaSetor().getModel().getValueAt(setar, 1);
         
-          System.out.println(codSetor +"-"+ descricaoSetor);
+   
         
         view.getCodSetorFuncionario().setText(Integer.toString((int) view.getTabelaConsultaSetor().getModel().getValueAt(setar, 0)));
         view.getDescSetorFuncionario().setText((String) view.getTabelaConsultaSetor().getModel().getValueAt(setar, 1));
-        
+        atualizarListaEpi();
         
       }
-         
+    
+   public void atualizarListaEpi(){
+      
+      int codigosetorex = Integer.parseInt(view.getCodSetorFuncionario().getText());  
+      
+           String sql = "SELECT epi.descricao, sp.qtd_epi FROM setorepi sp INNER JOIN setor on setor.id = sp.id_setor INNER JOIN epi on epi.id = sp.id_epi WHERE sp.id_setor = ?";
+             
+       try {
+    
+            executar = conexaoBD.prepareStatement(sql);    
+           
+            //O trecho abaixo troca o ? pelo conteudo da caixa
+            executar.setInt(1, codigosetorex);
+            rs=executar.executeQuery();
+            
+        //a linha abixo vai usar a rs2XML.jar para preencher a Tabela
+          view.getTabelaEpiSetorFuncionario().setModel(DbUtils.resultSetToTableModel(rs));    
+          
+  
+       } catch (SQLException erro) {
+            // Icones a 32px para caixa de mensagem
+                ImageIcon iconeSalvo = new ImageIcon("c:\\almoxarifadoExpress\\icone\\erro.png");
+                JOptionPane.showMessageDialog(null," Erro na Consutla deste EPI \n Erro:  !"+erro,"Cadastro de EPI",JOptionPane.PLAIN_MESSAGE,iconeSalvo );
+       }
+      
+  }
+       
+      
           
 }
 

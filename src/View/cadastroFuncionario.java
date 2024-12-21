@@ -100,7 +100,8 @@ public class cadastroFuncionario extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cadastro de Funcionaio");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -130,6 +131,11 @@ public class cadastroFuncionario extends javax.swing.JFrame {
         });
 
         botaoCancelarFuncionario.setText("Cancelar");
+        botaoCancelarFuncionario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botaoCancelarFuncionarioMouseClicked(evt);
+            }
+        });
 
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -606,6 +612,10 @@ public class cadastroFuncionario extends javax.swing.JFrame {
     private void tabelaConsultaSetorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaConsultaSetorMouseClicked
         controller.CodigoSetor();
     }//GEN-LAST:event_tabelaConsultaSetorMouseClicked
+
+    private void botaoCancelarFuncionarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoCancelarFuncionarioMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_botaoCancelarFuncionarioMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
