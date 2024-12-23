@@ -5,17 +5,29 @@
  */
 package View.Relatorios;
 
+import Controller.RelatorioEpiController;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Fabinhu
  */
 public class relatorioEpi extends javax.swing.JFrame {
 
+    private RelatorioEpiController controller;
+    
     /**
      * Creates new form consultaUsuario
      */
     public relatorioEpi() {
         initComponents();
+        controller = new RelatorioEpiController(this);
+        controller.ocultarCampos();
+        
     }
 
     /**
@@ -35,28 +47,66 @@ public class relatorioEpi extends javax.swing.JFrame {
         jMenu6 = new javax.swing.JMenu();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        descEpi = new javax.swing.JTextField();
         lblCadastroEpiDescartavel = new javax.swing.JLabel();
-        jcbCadastroEpiDescartavel = new javax.swing.JComboBox<>();
+        cboDevolverconsulta = new javax.swing.JComboBox<>();
         lblCadastroEpiDescartavel1 = new javax.swing.JLabel();
-        jcbCadastroEpiDescartavel1 = new javax.swing.JComboBox<>();
-        jtfCadastroEpiValidade = new javax.swing.JTextField();
-        lblCadastroEpiValidade = new javax.swing.JLabel();
-        jtfCadastroEpCa = new javax.swing.JTextField();
+        cboDescartavelConsulta = new javax.swing.JComboBox<>();
+        CodigoCAEPIConsulta = new javax.swing.JTextField();
         lblCadastroEpiCodigoCA = new javax.swing.JLabel();
         lblCadastroEpiLoteCa = new javax.swing.JLabel();
-        jtfCadastroEpiLoteCa = new javax.swing.JTextField();
+        loteCAEpiConsulta = new javax.swing.JTextField();
         lblCadastroEpiNomeFabricante = new javax.swing.JLabel();
-        jtfCadastroEpiNomeFornecedor = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        nomeEmpresaEPi = new javax.swing.JTextField();
+        lblCadastroEpiLoteCa1 = new javax.swing.JLabel();
+        validadeEPIConsulta = new javax.swing.JTextField();
+        cboOperadorValidade = new javax.swing.JComboBox<>();
+        idOcultoEmpresa = new javax.swing.JTextField();
+        nomeOcultoemprsa = new javax.swing.JTextField();
+        idOcultoEPI = new javax.swing.JTextField();
+        nomeOcultoEPI = new javax.swing.JTextField();
+        cboSituacaoEpi = new javax.swing.JComboBox<>();
+        jLabel15 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabelaConsutlaEpi = new javax.swing.JTable();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        codAlterarEPI = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        descAlterarEPI = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        cboDevolvetAlterarEPI = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
+        cboDescartavelAlterarEPI = new javax.swing.JComboBox<>();
+        jLabel6 = new javax.swing.JLabel();
+        valAlterarEPI = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        observacaoAlterarEPI = new javax.swing.JTextArea();
+        jLabel8 = new javax.swing.JLabel();
+        codCAAlterarEPI = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        loteCAAlterarEPI = new javax.swing.JTextField();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        riscoAlterarEPI = new javax.swing.JTextArea();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        codEmpAlterarEPI = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        descEmpAlterarEPI = new javax.swing.JTextField();
+        cbosituacaoEpiAlterar = new javax.swing.JComboBox<>();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        botaoAtualizaDados = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jmConsultar = new javax.swing.JMenu();
+        jMenu7 = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
-        SALVAR = new javax.swing.JMenu();
         jmIncluir = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
 
         jMenu3.setText("File");
         jMenuBar2.add(jMenu3);
@@ -74,69 +124,100 @@ public class relatorioEpi extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabel1.setText("Descrição");
+        jLabel1.setText("Descriçao");
 
-        lblCadastroEpiDescartavel.setText("Descartável");
+        descEpi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                descEpiActionPerformed(evt);
+            }
+        });
+        descEpi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                descEpiKeyReleased(evt);
+            }
+        });
 
-        jcbCadastroEpiDescartavel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sim", "Não" }));
+        lblCadastroEpiDescartavel.setText("Devolver");
+
+        cboDevolverconsulta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sim", "Não" }));
 
         lblCadastroEpiDescartavel1.setText("Descartável");
 
-        jcbCadastroEpiDescartavel1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sim", "Não" }));
-
-        lblCadastroEpiValidade.setText("Validade");
+        cboDescartavelConsulta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sim", "Não" }));
 
         lblCadastroEpiCodigoCA.setText("Código CA");
 
         lblCadastroEpiLoteCa.setText("Lote CA");
 
-        lblCadastroEpiNomeFabricante.setText("Nome Fabbricante");
+        lblCadastroEpiNomeFabricante.setText("Empresa");
 
-        jtfCadastroEpiNomeFornecedor.addActionListener(new java.awt.event.ActionListener() {
+        nomeEmpresaEPi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfCadastroEpiNomeFornecedorActionPerformed(evt);
+                nomeEmpresaEPiActionPerformed(evt);
             }
         });
+
+        lblCadastroEpiLoteCa1.setText("Validade");
+
+        cboOperadorValidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Maior", "Menor", "Igual" }));
+
+        cboSituacaoEpi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ativo", "Excluido" }));
+
+        jLabel15.setText("Situação");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(lblCadastroEpiLoteCa))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel1)))
-                .addGap(18, 18, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(16, 16, 16)
-                        .addComponent(lblCadastroEpiNomeFabricante)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jtfCadastroEpiNomeFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jtfCadastroEpiLoteCa, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(20, 20, 20)
                         .addComponent(lblCadastroEpiDescartavel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jcbCadastroEpiDescartavel1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cboDescartavelConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lblCadastroEpiDescartavel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jcbCadastroEpiDescartavel, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cboDevolverconsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50)
+                        .addComponent(lblCadastroEpiLoteCa1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cboOperadorValidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(validadeEPIConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblCadastroEpiCodigoCA)
+                        .addComponent(lblCadastroEpiLoteCa)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jtfCadastroEpCa, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addComponent(lblCadastroEpiValidade)
+                        .addComponent(loteCAEpiConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblCadastroEpiCodigoCA))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(descEpi)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jtfCadastroEpiValidade, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(128, 128, 128))
+                        .addComponent(idOcultoEPI, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nomeOcultoEPI, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(idOcultoEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nomeOcultoemprsa, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblCadastroEpiNomeFabricante)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nomeEmpresaEPi, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(CodigoCAEPIConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel15)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cboSituacaoEpi, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(9, 9, 9))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,51 +225,234 @@ public class relatorioEpi extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(descEpi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCadastroEpiNomeFabricante)
-                    .addComponent(jtfCadastroEpiNomeFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nomeEmpresaEPi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(idOcultoEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nomeOcultoemprsa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(idOcultoEPI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nomeOcultoEPI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel15)
+                        .addComponent(cboSituacaoEpi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jtfCadastroEpiLoteCa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblCadastroEpiLoteCa))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblCadastroEpiDescartavel)
-                        .addComponent(jcbCadastroEpiDescartavel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblCadastroEpiDescartavel1)
-                        .addComponent(jcbCadastroEpiDescartavel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jtfCadastroEpCa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblCadastroEpiCodigoCA)
-                        .addComponent(jtfCadastroEpiValidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblCadastroEpiValidade)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCadastroEpiDescartavel)
+                    .addComponent(cboDevolverconsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCadastroEpiDescartavel1)
+                    .addComponent(cboDescartavelConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(validadeEPIConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCadastroEpiLoteCa1)
+                    .addComponent(cboOperadorValidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CodigoCAEPIConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCadastroEpiCodigoCA)
+                    .addComponent(loteCAEpiConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCadastroEpiLoteCa))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
         jButton1.setText("Consultar");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
 
         jButton2.setText("Cancelar");
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        tabelaConsutlaEpi.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(tabelaConsutlaEpi);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel2.setText("Cód");
+
+        jLabel3.setText("Descrição");
+
+        jLabel4.setText("Devolver");
+
+        cboDevolvetAlterarEPI.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sim", "Não" }));
+
+        jLabel5.setText("Descartavel");
+
+        cboDescartavelAlterarEPI.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sim", "Não" }));
+
+        jLabel6.setText("Val.");
+
+        jLabel7.setText("Observacão");
+
+        observacaoAlterarEPI.setColumns(20);
+        observacaoAlterarEPI.setLineWrap(true);
+        observacaoAlterarEPI.setRows(5);
+        jScrollPane2.setViewportView(observacaoAlterarEPI);
+
+        jLabel8.setText("Cód. C.A.");
+
+        jLabel9.setText("Lote C.A.");
+
+        riscoAlterarEPI.setColumns(20);
+        riscoAlterarEPI.setLineWrap(true);
+        riscoAlterarEPI.setRows(5);
+        jScrollPane3.setViewportView(riscoAlterarEPI);
+
+        jLabel10.setText("Risco");
+
+        jLabel11.setText("Cód. Emp.");
+
+        jLabel12.setText("Desc. Empresa");
+
+        cbosituacaoEpiAlterar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ativo", "Excluido" }));
+
+        jLabel14.setText("Sit. Cadastro");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cboDevolvetAlterarEPI, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cboDescartavelAlterarEPI, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33)
+                        .addComponent(jLabel14)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cbosituacaoEpiAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(codEmpAlterarEPI, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(descEmpAlterarEPI, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(12, 12, 12)
+                                .addComponent(valAlterarEPI))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(codAlterarEPI, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(descAlterarEPI))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(codCAAlterarEPI, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(loteCAAlterarEPI, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(26, 37, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(codAlterarEPI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)
+                            .addComponent(descAlterarEPI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(valAlterarEPI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8)
+                            .addComponent(codCAAlterarEPI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9)
+                            .addComponent(loteCAAlterarEPI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel11)
+                            .addComponent(codEmpAlterarEPI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel12)
+                            .addComponent(descEmpAlterarEPI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(cboDevolvetAlterarEPI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5)
+                            .addComponent(cboDescartavelAlterarEPI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel14)
+                            .addComponent(cbosituacaoEpiAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel10))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2)
+                            .addComponent(jScrollPane3))))
+                .addContainerGap(10, Short.MAX_VALUE))
+        );
+
+        jLabel13.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel13.setText("Editar Dados EPI");
+
+        botaoAtualizaDados.setText("Atualizar Dados");
 
         jmConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icones/iconeConsultar24px.png"))); // NOI18N
         jMenuBar1.add(jmConsultar);
 
+        jMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icones/iconeEditar24px.png"))); // NOI18N
+        jMenuBar1.add(jMenu7);
+
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icones/iconeExcluir32px.png"))); // NOI18N
         jMenuBar1.add(jMenu1);
-
-        SALVAR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icones/iconeSalvar24px.png"))); // NOI18N
-        jMenuBar1.add(SALVAR);
 
         jmIncluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icones/iconeNovo24px.png"))); // NOI18N
         jmIncluir.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -203,6 +467,9 @@ public class relatorioEpi extends javax.swing.JFrame {
         });
         jMenuBar1.add(jmIncluir);
 
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icones/iconeImprimir24px.png"))); // NOI18N
+        jMenuBar1.add(jMenu2);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -210,16 +477,19 @@ public class relatorioEpi extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(botaoAtualizaDados)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1)
                         .addGap(18, 18, 18)
                         .addComponent(jButton2))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 909, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 909, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -227,20 +497,25 @@ public class relatorioEpi extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 383, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jButton2)
+                    .addComponent(botaoAtualizaDados))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jtfCadastroEpiNomeFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCadastroEpiNomeFornecedorActionPerformed
+    private void nomeEmpresaEPiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeEmpresaEPiActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtfCadastroEpiNomeFornecedorActionPerformed
+    }//GEN-LAST:event_nomeEmpresaEPiActionPerformed
 
     private void jmIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmIncluirActionPerformed
  
@@ -250,6 +525,18 @@ public class relatorioEpi extends javax.swing.JFrame {
     private void jmIncluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmIncluirMouseClicked
        View.cadastroEPI epi = new View.cadastroEPI();
         epi.setVisible(true);    }//GEN-LAST:event_jmIncluirMouseClicked
+
+    private void descEpiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descEpiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_descEpiActionPerformed
+
+    private void descEpiKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_descEpiKeyReleased
+       controller.consultarEmpresaNome();
+    }//GEN-LAST:event_descEpiKeyReleased
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+       controller.consultarEmpresaNome();
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -290,35 +577,291 @@ public class relatorioEpi extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu SALVAR;
+    private javax.swing.JTextField CodigoCAEPIConsulta;
+    private javax.swing.JButton botaoAtualizaDados;
+    private javax.swing.JComboBox<String> cboDescartavelAlterarEPI;
+    private javax.swing.JComboBox<String> cboDescartavelConsulta;
+    private javax.swing.JComboBox<String> cboDevolverconsulta;
+    private javax.swing.JComboBox<String> cboDevolvetAlterarEPI;
+    private javax.swing.JComboBox<String> cboOperadorValidade;
+    private javax.swing.JComboBox<String> cboSituacaoEpi;
+    private javax.swing.JComboBox<String> cbosituacaoEpiAlterar;
+    private javax.swing.JTextField codAlterarEPI;
+    private javax.swing.JTextField codCAAlterarEPI;
+    private javax.swing.JTextField codEmpAlterarEPI;
+    private javax.swing.JTextField descAlterarEPI;
+    private javax.swing.JTextField descEmpAlterarEPI;
+    private javax.swing.JTextField descEpi;
+    private javax.swing.JTextField idOcultoEPI;
+    private javax.swing.JTextField idOcultoEmpresa;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuBar jMenuBar3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JComboBox<String> jcbCadastroEpiDescartavel;
-    private javax.swing.JComboBox<String> jcbCadastroEpiDescartavel1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JMenu jmConsultar;
     private javax.swing.JMenu jmIncluir;
-    private javax.swing.JTextField jtfCadastroEpCa;
-    private javax.swing.JTextField jtfCadastroEpiLoteCa;
-    private javax.swing.JTextField jtfCadastroEpiNomeFornecedor;
-    private javax.swing.JTextField jtfCadastroEpiValidade;
     private javax.swing.JLabel lblCadastroEpiCodigoCA;
     private javax.swing.JLabel lblCadastroEpiDescartavel;
     private javax.swing.JLabel lblCadastroEpiDescartavel1;
     private javax.swing.JLabel lblCadastroEpiLoteCa;
+    private javax.swing.JLabel lblCadastroEpiLoteCa1;
     private javax.swing.JLabel lblCadastroEpiNomeFabricante;
-    private javax.swing.JLabel lblCadastroEpiValidade;
+    private javax.swing.JTextField loteCAAlterarEPI;
+    private javax.swing.JTextField loteCAEpiConsulta;
+    private javax.swing.JTextField nomeEmpresaEPi;
+    private javax.swing.JTextField nomeOcultoEPI;
+    private javax.swing.JTextField nomeOcultoemprsa;
+    private javax.swing.JTextArea observacaoAlterarEPI;
+    private javax.swing.JTextArea riscoAlterarEPI;
+    private javax.swing.JTable tabelaConsutlaEpi;
+    private javax.swing.JTextField valAlterarEPI;
+    private javax.swing.JTextField validadeEPIConsulta;
     // End of variables declaration//GEN-END:variables
+
+    public JTextField getCodigoCAEPIConsulta() {
+        return CodigoCAEPIConsulta;
+    }
+
+    public void setCodigoCAEPIConsulta(JTextField CodigoCAEPIConsulta) {
+        this.CodigoCAEPIConsulta = CodigoCAEPIConsulta;
+    }
+
+    public JButton getBotaoAtualizaDados() {
+        return botaoAtualizaDados;
+    }
+
+    public void setBotaoAtualizaDados(JButton botaoAtualizaDados) {
+        this.botaoAtualizaDados = botaoAtualizaDados;
+    }
+
+    public JComboBox<String> getCboDescartavelAlterarEPI() {
+        return cboDescartavelAlterarEPI;
+    }
+
+    public void setCboDescartavelAlterarEPI(JComboBox<String> cboDescartavelAlterarEPI) {
+        this.cboDescartavelAlterarEPI = cboDescartavelAlterarEPI;
+    }
+
+    public JComboBox<String> getCboDescartavelConsulta() {
+        return cboDescartavelConsulta;
+    }
+
+    public void setCboDescartavelConsulta(JComboBox<String> cboDescartavelConsulta) {
+        this.cboDescartavelConsulta = cboDescartavelConsulta;
+    }
+
+    public JComboBox<String> getCboDevolverconsulta() {
+        return cboDevolverconsulta;
+    }
+
+    public void setCboDevolverconsulta(JComboBox<String> cboDevolverconsulta) {
+        this.cboDevolverconsulta = cboDevolverconsulta;
+    }
+
+    public JComboBox<String> getCboDevolvetAlterarEPI() {
+        return cboDevolvetAlterarEPI;
+    }
+
+    public void setCboDevolvetAlterarEPI(JComboBox<String> cboDevolvetAlterarEPI) {
+        this.cboDevolvetAlterarEPI = cboDevolvetAlterarEPI;
+    }
+
+    public JComboBox<String> getCboOperadorValidade() {
+        return cboOperadorValidade;
+    }
+
+    public void setCboOperadorValidade(JComboBox<String> cboOperadorValidade) {
+        this.cboOperadorValidade = cboOperadorValidade;
+    }
+
+    public JTextField getCodAlterarEPI() {
+        return codAlterarEPI;
+    }
+
+    public void setCodAlterarEPI(JTextField codAlterarEPI) {
+        this.codAlterarEPI = codAlterarEPI;
+    }
+
+    public JTextField getCodCAAlterarEPI() {
+        return codCAAlterarEPI;
+    }
+
+    public void setCodCAAlterarEPI(JTextField codCAAlterarEPI) {
+        this.codCAAlterarEPI = codCAAlterarEPI;
+    }
+
+    public JTextField getCodEmpAlterarEPI() {
+        return codEmpAlterarEPI;
+    }
+
+    public void setCodEmpAlterarEPI(JTextField codEmpAlterarEPI) {
+        this.codEmpAlterarEPI = codEmpAlterarEPI;
+    }
+
+    public JTextField getDescAlterarEPI() {
+        return descAlterarEPI;
+    }
+
+    public void setDescAlterarEPI(JTextField descAlterarEPI) {
+        this.descAlterarEPI = descAlterarEPI;
+    }
+
+    public JTextField getDescEmpAlterarEPI() {
+        return descEmpAlterarEPI;
+    }
+
+    public void setDescEmpAlterarEPI(JTextField descEmpAlterarEPI) {
+        this.descEmpAlterarEPI = descEmpAlterarEPI;
+    }
+
+    public JTextField getDescEpi() {
+        return descEpi;
+    }
+
+    public void setDescEpi(JTextField descEpi) {
+        this.descEpi = descEpi;
+    }
+
+    public JTextField getIdOcultoEPI() {
+        return idOcultoEPI;
+    }
+
+    public void setIdOcultoEPI(JTextField idOcultoEPI) {
+        this.idOcultoEPI = idOcultoEPI;
+    }
+
+    public JTextField getIdOcultoEmpresa() {
+        return idOcultoEmpresa;
+    }
+
+    public void setIdOcultoEmpresa(JTextField idOcultoEmpresa) {
+        this.idOcultoEmpresa = idOcultoEmpresa;
+    }
+
+    public JTextField getLoteCAAlterarEPI() {
+        return loteCAAlterarEPI;
+    }
+
+    public void setLoteCAAlterarEPI(JTextField loteCAAlterarEPI) {
+        this.loteCAAlterarEPI = loteCAAlterarEPI;
+    }
+
+    public JTextField getLoteCAEpiConsulta() {
+        return loteCAEpiConsulta;
+    }
+
+    public void setLoteCAEpiConsulta(JTextField loteCAEpiConsulta) {
+        this.loteCAEpiConsulta = loteCAEpiConsulta;
+    }
+
+    public JTextField getNomeOcultoEPI() {
+        return nomeOcultoEPI;
+    }
+
+    public void setNomeOcultoEPI(JTextField nomeOcultoEPI) {
+        this.nomeOcultoEPI = nomeOcultoEPI;
+    }
+
+    public JTextField getNomeOcultoemprsa() {
+        return nomeOcultoemprsa;
+    }
+
+    public void setNomeOcultoemprsa(JTextField nomeOcultoemprsa) {
+        this.nomeOcultoemprsa = nomeOcultoemprsa;
+    }
+
+    public JTextArea getObservacaoAlterarEPI() {
+        return observacaoAlterarEPI;
+    }
+
+    public void setObservacaoAlterarEPI(JTextArea observacaoAlterarEPI) {
+        this.observacaoAlterarEPI = observacaoAlterarEPI;
+    }
+
+    public JTextArea getRiscoAlterarEPI() {
+        return riscoAlterarEPI;
+    }
+
+    public void setRiscoAlterarEPI(JTextArea riscoAlterarEPI) {
+        this.riscoAlterarEPI = riscoAlterarEPI;
+    }
+
+    public JTable getTabelaConsutlaEpi() {
+        return tabelaConsutlaEpi;
+    }
+
+    public void setTabelaConsutlaEpi(JTable tabelaConsutlaEpi) {
+        this.tabelaConsutlaEpi = tabelaConsutlaEpi;
+    }
+
+    public JTextField getValAlterarEPI() {
+        return valAlterarEPI;
+    }
+
+    public void setValAlterarEPI(JTextField valAlterarEPI) {
+        this.valAlterarEPI = valAlterarEPI;
+    }
+
+    public JTextField getValidadeEPIConsulta() {
+        return validadeEPIConsulta;
+    }
+
+    public void setValidadeEPIConsulta(JTextField validadeEPIConsulta) {
+        this.validadeEPIConsulta = validadeEPIConsulta;
+    }
+
+    public JComboBox<String> getCboSituacaoEpi() {
+        return cboSituacaoEpi;
+    }
+
+    public void setCboSituacaoEpi(JComboBox<String> cboSituacaoEpi) {
+        this.cboSituacaoEpi = cboSituacaoEpi;
+    }
+
+    public JTextField getNomeEmpresaEPi() {
+        return nomeEmpresaEPi;
+    }
+
+    public void setNomeEmpresaEPi(JTextField nomeEmpresaEPi) {
+        this.nomeEmpresaEPi = nomeEmpresaEPi;
+    }
+
+    public JComboBox<String> getCbosituacaoEpiAlterar() {
+        return cbosituacaoEpiAlterar;
+    }
+
+    public void setCbosituacaoEpiAlterar(JComboBox<String> cbosituacaoEpiAlterar) {
+        this.cbosituacaoEpiAlterar = cbosituacaoEpiAlterar;
+    }
+
+
 }

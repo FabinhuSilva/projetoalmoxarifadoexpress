@@ -56,10 +56,7 @@ public class RelatorioFuncionarioController {
     
     public void preencherIdOculto(){
       
-    
-      
-         int codigosituacaocadastro  = 0;
-        
+        int codigosituacaocadastro  = 0;
         if(view.getCboSituacaoCadastro().getSelectedItem() == "Ativo"){
             codigosituacaocadastro = 0;
         }else{
@@ -138,8 +135,7 @@ public class RelatorioFuncionarioController {
     
    public void consultarEmpresa(){
            
-        int codigosituacaocadastro  = 0;    
-        
+        int codigosituacaocadastro  = 0;       
         if(view.getCboSituacaoCadastro().getSelectedItem() == "Ativo"){
             codigosituacaocadastro = 0;
         }else{
