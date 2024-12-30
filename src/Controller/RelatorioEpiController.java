@@ -6,6 +6,7 @@
 package Controller;
 
 
+import View.Relatorios.intRelatorioEPI;
 import View.Relatorios.relatorioEpi;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -21,7 +22,7 @@ import net.proteanit.sql.DbUtils;
  */
 public class RelatorioEpiController {
     
-      private final relatorioEpi view;
+      private final intRelatorioEPI view;
         Connection conexao = null;
         PreparedStatement pst = null;
         ResultSet rs = null;
@@ -30,7 +31,7 @@ public class RelatorioEpiController {
 Connection conexaoBD = new conexaoBancoController().conectarBanco();
      
         
-    public RelatorioEpiController(relatorioEpi view) {
+    public RelatorioEpiController(intRelatorioEPI view) {
         this.view = view;
         
     }
@@ -41,13 +42,14 @@ Connection conexaoBD = new conexaoBancoController().conectarBanco();
         view.getNomeOcultoEPI().setVisible(false);
         view.getNomeOcultoemprsa().setVisible(false);
         view.getIdOcultoEmpresaalterar().setVisible(false);
+        view.getBotaoconsultarmenu().setEnabled(false);
         
-            view.getCodAlterarEPI().setEnabled(false);
+             view.getCodAlterarEPI().setEnabled(false);
              view.getDescAlterarEPI().setEnabled(false);
              view.getValAlterarEPI().setEnabled(false);
              view.getCodCAAlterarEPI().setEnabled(false);
              view.getLoteCAAlterarEPI().setEnabled(false);
-             view.getIdOcultoEmpresa().setEnabled(false);
+             view.getIdOcultoEmpresa().setVisible(false);
              view.getObservacaoAlterarEPI().setEnabled(false);
              view.getRiscoAlterarEPI().setEnabled(false);
              view.getCboDescartavelAlterarEPI().setEnabled(false);

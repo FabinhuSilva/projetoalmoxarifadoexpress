@@ -64,8 +64,8 @@ public class relatorioEpi extends javax.swing.JFrame {
         nomeOcultoEPI = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         cboSituacaoEpi = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        botaoconsultar = new javax.swing.JButton();
+        botaoCancelar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaConsutlaEpi = new javax.swing.JTable();
@@ -217,14 +217,14 @@ public class relatorioEpi extends javax.swing.JFrame {
                 .addContainerGap(8, Short.MAX_VALUE))
         );
 
-        jButton1.setText("Consultar");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        botaoconsultar.setText("Consultar");
+        botaoconsultar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                botaoconsultarMouseClicked(evt);
             }
         });
 
-        jButton2.setText("Cancelar");
+        botaoCancelar.setText("Cancelar");
 
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -484,9 +484,9 @@ public class relatorioEpi extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(botaoAtualizaDados)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)
+                        .addComponent(botaoconsultar)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2))
+                        .addComponent(botaoCancelar))
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -504,8 +504,8 @@ public class relatorioEpi extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
+                    .addComponent(botaoconsultar)
+                    .addComponent(botaoCancelar)
                     .addComponent(botaoAtualizaDados))
                 .addContainerGap())
         );
@@ -534,9 +534,9 @@ public class relatorioEpi extends javax.swing.JFrame {
        controller.consultarEPIDesc();
     }//GEN-LAST:event_descEpiKeyReleased
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void botaoconsultarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoconsultarMouseClicked
        controller.consultarEPIDesc();
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_botaoconsultarMouseClicked
 
     private void nomeEmpresaEPiKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nomeEmpresaEPiKeyReleased
         controller.consultarEmpresaDesc();
@@ -614,7 +614,9 @@ public class relatorioEpi extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoAtualizaDados;
+    private javax.swing.JButton botaoCancelar;
     private javax.swing.JMenu botaoEditar;
+    private javax.swing.JButton botaoconsultar;
     private javax.swing.JComboBox<String> cboDescartavelAlterarEPI;
     private javax.swing.JComboBox<String> cboDescartavelConsulta;
     private javax.swing.JComboBox<String> cboDevolverconsulta;
@@ -630,8 +632,6 @@ public class relatorioEpi extends javax.swing.JFrame {
     private javax.swing.JTextField idOcultoEPI;
     private javax.swing.JTextField idOcultoEmpresa;
     private javax.swing.JTextField idOcultoEmpresaalterar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

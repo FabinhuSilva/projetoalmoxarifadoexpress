@@ -43,7 +43,7 @@ public class cadastroEmpresaController {
         //Testandoo
         //----------------------------------------------
           
-              String sql = "INSERT INTO empresa(descricao, cnpj, ie, endereco, situacaocadastro) VALUES ( ?, ?, ?, ?, ?);";
+              String sql = "INSERT INTO empresa(descricao, cnpj, ie, endereco, id_situacaocadastro) VALUES ( ?, ?, ?, ?, ?);";
 
 
             PreparedStatement executar = null;

@@ -5,7 +5,8 @@
  */
 package Controller;
 
-import View.Relatorios.relatorioExcecaoEpi;
+import View.Relatorios.intRelatorioExcecao;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,12 +21,12 @@ import net.proteanit.sql.DbUtils;
 public class RelatorioExcecaoEpiController {
     
     
-      private final relatorioExcecaoEpi view;
+      private final intRelatorioExcecao view;
       Connection conexaoBD = new conexaoBancoController().conectarBanco();
       PreparedStatement executar = null;
       ResultSet rs = null;
    
-    public RelatorioExcecaoEpiController(relatorioExcecaoEpi view) {
+    public RelatorioExcecaoEpiController(intRelatorioExcecao view) {
     this.view = view;        	
     
 }

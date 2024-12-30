@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import View.Relatorios.intRelatorioEmpresa;
 import View.Relatorios.relatorioEmpresa;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -21,7 +22,7 @@ import net.proteanit.sql.DbUtils;
  */
 public class RelatorioEmpresaController {
  
-        private final relatorioEmpresa view;
+        private final intRelatorioEmpresa view;
         Connection conexao = null;
         PreparedStatement pst = null;
         ResultSet rs = null;
@@ -30,7 +31,7 @@ public class RelatorioEmpresaController {
             Connection conexaoBD = new conexaoBancoController().conectarBanco();
      
         
-    public RelatorioEmpresaController(relatorioEmpresa view) {
+    public RelatorioEmpresaController(intRelatorioEmpresa view) {
         this.view = view;
         
     }

@@ -50,7 +50,7 @@ public class loginController {
        login menuLogin = new login();
         if(usuarioCadastrado){
        menuPrincipal telademenu  = new menuPrincipal();
-       telademenu.setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
+       //telademenu.setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
        telademenu.setVisible(true);  
        
              }else{

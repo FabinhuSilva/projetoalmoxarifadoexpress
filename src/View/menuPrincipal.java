@@ -5,15 +5,8 @@
  */
 package View;
 
-import Controller.conexaoBancoController;
-import Model.DAO.usuarioDAO;
-import Model.usuario;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
+import Controller.classeUtilitaria;
+import javax.swing.JDesktopPane;
 
 /**
  *
@@ -21,11 +14,18 @@ import javax.swing.JOptionPane;
  */
 public class menuPrincipal extends javax.swing.JFrame {
 
+    
+    private  classeUtilitaria controller; 
+    
     /**
      * Creates new form MenuPrincipal
      */
     public menuPrincipal() {
         initComponents();
+       controller = new classeUtilitaria(this);
+       jmRelatorio.setEnabled(false);
+       jmImportacao.setEnabled(false);
+        //controller.travarTelas();
     }
 
     /**
@@ -37,18 +37,18 @@ public class menuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        desktop = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jmCadastro = new javax.swing.JMenu();
+        jmCadastroEPI = new javax.swing.JMenu();
         jmCadastroFuncionario = new javax.swing.JMenuItem();
         jmCadastroEmpresa = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jmiCadastroEPI = new javax.swing.JMenuItem();
         jmCadastroUsuario = new javax.swing.JMenuItem();
         menuEPISetor = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        jmCadastroExEpi = new javax.swing.JMenuItem();
         jmOperacao = new javax.swing.JMenu();
         jmOpercaoEntregaEPI = new javax.swing.JMenuItem();
         jmOperacaoAjusteEstoque = new javax.swing.JMenuItem();
@@ -61,42 +61,41 @@ public class menuPrincipal extends javax.swing.JFrame {
         jmmImportacaoEstoque = new javax.swing.JMenuItem();
         jmImportacaoEntregaEPI = new javax.swing.JMenuItem();
         jmSair = new javax.swing.JMenu();
-        MenuTesteFuncoes = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("AlmoxarifadoExpress");
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 800));
-        jDesktopPane1.getAccessibleContext().setAccessibleName("");
-        jDesktopPane1.getAccessibleContext().setAccessibleDescription("");
 
         jLabel1.setText("Data e Hora");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 810, 560, 30));
 
         jLabel2.setText("Usuario Logado");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 806, 560, 30));
+        getContentPane().add(desktop, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1220, 810));
 
-        jmCadastro.setText("Cadastro");
-        jmCadastro.addMouseListener(new java.awt.event.MouseAdapter() {
+        jmCadastroEPI.setText("Cadastro");
+        jmCadastroEPI.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jmCadastroMouseClicked(evt);
+                jmCadastroEPIMouseClicked(evt);
             }
         });
-        jmCadastro.addActionListener(new java.awt.event.ActionListener() {
+        jmCadastroEPI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmCadastroActionPerformed(evt);
+                jmCadastroEPIActionPerformed(evt);
             }
         });
 
+        jmCadastroFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icones/iconeFuncionario16px.png"))); // NOI18N
         jmCadastroFuncionario.setText("Funcionario");
         jmCadastroFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmCadastroFuncionarioActionPerformed(evt);
             }
         });
-        jmCadastro.add(jmCadastroFuncionario);
+        jmCadastroEPI.add(jmCadastroFuncionario);
 
+        jmCadastroEmpresa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icones/iconeEmpresa16px.png"))); // NOI18N
         jmCadastroEmpresa.setText("Empresa");
         jmCadastroEmpresa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -108,18 +107,19 @@ public class menuPrincipal extends javax.swing.JFrame {
                 jmCadastroEmpresaActionPerformed(evt);
             }
         });
-        jmCadastro.add(jmCadastroEmpresa);
+        jmCadastroEPI.add(jmCadastroEmpresa);
 
         jMenuItem3.setText("Setor");
-        jmCadastro.add(jMenuItem3);
+        jmCadastroEPI.add(jMenuItem3);
 
+        jmiCadastroEPI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icones/iconeEPI16px_1.png"))); // NOI18N
         jmiCadastroEPI.setText("EPI");
         jmiCadastroEPI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmiCadastroEPIActionPerformed(evt);
             }
         });
-        jmCadastro.add(jmiCadastroEPI);
+        jmCadastroEPI.add(jmiCadastroEPI);
 
         jmCadastroUsuario.setText("Usuario Sistema");
         jmCadastroUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -127,7 +127,7 @@ public class menuPrincipal extends javax.swing.JFrame {
                 jmCadastroUsuarioActionPerformed(evt);
             }
         });
-        jmCadastro.add(jmCadastroUsuario);
+        jmCadastroEPI.add(jmCadastroUsuario);
 
         menuEPISetor.setText("EPI por Setor");
         menuEPISetor.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -140,12 +140,18 @@ public class menuPrincipal extends javax.swing.JFrame {
                 menuEPISetorActionPerformed(evt);
             }
         });
-        jmCadastro.add(menuEPISetor);
+        jmCadastroEPI.add(menuEPISetor);
 
-        jMenuItem2.setText("Exceção EPI");
-        jmCadastro.add(jMenuItem2);
+        jmCadastroExEpi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icones/iconeExcecap16px.png"))); // NOI18N
+        jmCadastroExEpi.setText("Exceção EPI");
+        jmCadastroExEpi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmCadastroExEpiActionPerformed(evt);
+            }
+        });
+        jmCadastroEPI.add(jmCadastroExEpi);
 
-        jMenuBar1.add(jmCadastro);
+        jMenuBar1.add(jmCadastroEPI);
 
         jmOperacao.setText("Operação");
 
@@ -196,69 +202,22 @@ public class menuPrincipal extends javax.swing.JFrame {
         });
         jMenuBar1.add(jmSair);
 
-        MenuTesteFuncoes.setText("Menu de Testes");
-
-        jMenuItem1.setText("Testando alterações");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        MenuTesteFuncoes.add(jMenuItem1);
-
-        jMenuBar1.add(MenuTesteFuncoes);
-
         setJMenuBar(jMenuBar1);
 
-        setSize(new java.awt.Dimension(1216, 839));
+        setSize(new java.awt.Dimension(1233, 908));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     //getContentPane().add(jDesktopPane);
     
     private void jmiCadastroEPIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCadastroEPIActionPerformed
-        View.Relatorios.relatorioEpi epi = new View.Relatorios.relatorioEpi();
-        epi.setVisible(true);
+      View.Relatorios.intRelatorioEPI Relepi = new View.Relatorios.intRelatorioEPI();
+      desktop.add(Relepi);
+      Relepi.setVisible(true)   ;
     }//GEN-LAST:event_jmiCadastroEPIActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        try{
-        Connection conexaoBanco = new conexaoBancoController().conectarBanco();
-        usuarioDAO usuarioCadastro = new usuarioDAO(conexaoBanco);
-        
-        //Testabdi Inserir
-        usuario inserirUsuario = new usuario("fabiano","fabimenu"," fabimenusenha","fabiemailemail.com.br", 0);
-        usuario usuarioInseridoEmBanco = usuarioCadastro.salvarUsuario(inserirUsuario);
-        
-        //Testando Select por ID
-        usuario usuarioSelecionadoNoInsert = usuarioCadastro.consultaPorId(usuarioInseridoEmBanco);
-        
-        //Testando Deleção
-        usuarioCadastro.excluirUsuario(usuarioSelecionadoNoInsert);
-        
-        
-            //selecionando todos
-            ArrayList<usuario> selecionarTodosUsuarios = usuarioCadastro.selecionarTodos();
-        
-            for (usuario selecionar : selecionarTodosUsuarios) {
-                System.out.println(selecionar.getId()+" | "+selecionar.getNome());
-            }
-                
-        }catch(SQLException ex){
-            System.out.println("Erro: "+ex);
-        }
-
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
     private void jmSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmSairMouseClicked
-        Connection conexaoBanco = (Connection) new conexaoBancoController();
-        try {
-            conexaoBanco.close();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro Apresentado ao SAIR: "+ex);
-        }
-        System.exit(0);
-        this.dispose();
+     controller.encerrarAplicativo();
     }//GEN-LAST:event_jmSairMouseClicked
 
     private void jmSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmSairActionPerformed
@@ -266,13 +225,15 @@ public class menuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jmSairActionPerformed
 
     private void jmCadastroFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCadastroFuncionarioActionPerformed
-         View.cadastroFuncionario funcionario = new View.cadastroFuncionario();
-        funcionario.setVisible(true);
+        View.Relatorios.intRelatorioFuncionario Relfuncionario = new View.Relatorios.intRelatorioFuncionario();
+        desktop.add(Relfuncionario);
+        Relfuncionario.setVisible(true);
     }//GEN-LAST:event_jmCadastroFuncionarioActionPerformed
 
     private void jmCadastroEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCadastroEmpresaActionPerformed
-        View.Relatorios.relatorioEmpresa empresa = new View.Relatorios.relatorioEmpresa();
-        empresa.setVisible(true);
+     View.Relatorios.intRelatorioEmpresa Relempresa = new View.Relatorios.intRelatorioEmpresa();
+      desktop.add(Relempresa);
+      Relempresa.setVisible(true);    
 
     }//GEN-LAST:event_jmCadastroEmpresaActionPerformed
 
@@ -281,18 +242,23 @@ public class menuPrincipal extends javax.swing.JFrame {
         menuUsuario.setVisible(true);
     }//GEN-LAST:event_jmCadastroUsuarioActionPerformed
 
-    private void jmCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCadastroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jmCadastroActionPerformed
+    private void jmCadastroEPIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCadastroEPIActionPerformed
+    View.Relatorios.intRelatorioEPI RelEPI = new View.Relatorios.intRelatorioEPI();
+    desktop.add(RelEPI);
+    RelEPI.setVisible(true);
+    
+                                         }//GEN-LAST:event_jmCadastroEPIActionPerformed
 
     private void jmCadastroEmpresaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmCadastroEmpresaMouseClicked
-        View.Relatorios.relatorioEmpresa menuEmpresa = new View.Relatorios.relatorioEmpresa();
-        menuEmpresa.setVisible(true);
+      View.Relatorios.intRelatorioEmpresa Relempresa = new View.Relatorios.intRelatorioEmpresa();
+      desktop.add(Relempresa);
+      Relempresa.setVisible(true);  
+    //empresa.show();
     }//GEN-LAST:event_jmCadastroEmpresaMouseClicked
 
-    private void jmCadastroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmCadastroMouseClicked
+    private void jmCadastroEPIMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmCadastroEPIMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jmCadastroMouseClicked
+    }//GEN-LAST:event_jmCadastroEPIMouseClicked
 
     private void menuEPISetorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuEPISetorMouseClicked
   
@@ -303,18 +269,22 @@ public class menuPrincipal extends javax.swing.JFrame {
         menuSetorEPI.setVisible(true);
     }//GEN-LAST:event_menuEPISetorActionPerformed
 
+    private void jmCadastroExEpiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCadastroExEpiActionPerformed
+    View.Relatorios.intRelatorioExcecao RelEx = new View.Relatorios.intRelatorioExcecao();
+    desktop.add(RelEx);
+    RelEx.setVisible(true);
+    }//GEN-LAST:event_jmCadastroExEpiActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu MenuTesteFuncoes;
-    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JDesktopPane desktop;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenu jmCadastro;
+    private javax.swing.JMenu jmCadastroEPI;
     private javax.swing.JMenuItem jmCadastroEmpresa;
+    private javax.swing.JMenuItem jmCadastroExEpi;
     private javax.swing.JMenuItem jmCadastroFuncionario;
     private javax.swing.JMenuItem jmCadastroUsuario;
     private javax.swing.JMenu jmImportacao;
@@ -332,4 +302,15 @@ public class menuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmmImportacaoEstoque;
     private javax.swing.JMenuItem menuEPISetor;
     // End of variables declaration//GEN-END:variables
+
+    public JDesktopPane getDesktop() {
+        return desktop;
+    }
+
+    public void setdesktop(JDesktopPane desktop) {
+        this.desktop = desktop;
+    }
+
+
+    
 }

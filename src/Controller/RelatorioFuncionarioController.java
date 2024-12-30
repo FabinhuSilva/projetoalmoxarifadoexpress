@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import View.Relatorios.intRelatorioFuncionario;
 import View.Relatorios.relatorioFuncionario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -21,7 +22,7 @@ import net.proteanit.sql.DbUtils;
 public class RelatorioFuncionarioController {
     
     
-        private final relatorioFuncionario view;
+        private final intRelatorioFuncionario view;
         Connection conexao = null;
         PreparedStatement pst = null;
         ResultSet rs = null;
@@ -30,7 +31,7 @@ public class RelatorioFuncionarioController {
             Connection conexaoBD = new conexaoBancoController().conectarBanco();
      
         
-    public RelatorioFuncionarioController(relatorioFuncionario view) {
+    public RelatorioFuncionarioController(intRelatorioFuncionario view) {
         this.view = view;
         
     }
@@ -303,8 +304,8 @@ if(i == JOptionPane.YES_OPTION) {
       view.getTabelaConsultaSetorAlterar().setEnabled(false);
       view.getPaneEmpresa().setColumnHeader(null);
       view.getPaneSetor().setColumnHeader(null);
-      view.getOcSelcSetorAlterar().setVisible(false);
-      view.getOcSelcEmpresaAlterar().setVisible(false);
+      view.getIdEmpresaoculto().setVisible(false);
+      view.getIdSetorOculto().setVisible(false);
       view.getDtAdmFuncinoarioAlterar().setEnabled(false);
       view.getBotaoAtualizar().setEnabled(false);
       view.getChapaAlterar().setEnabled(false);
@@ -371,8 +372,8 @@ if(i == JOptionPane.YES_OPTION) {
        
         int setarEmpresa = view.getTabelaConsultaEmpresaAlterar().getSelectedRow(); 
         int codigoEmpresaTabela = (int) view.getTabelaConsultaEmpresaAlterar().getModel().getValueAt(setarEmpresa, 0);
-        view.getIdEmpresaOculto().setText(String.valueOf(codigoEmpresaTabela));
-        System.out.println("Empresa: "+view.getIdEmpresaOculto().getText());
+        view.getIdEmpresaoculto().setText(String.valueOf(codigoEmpresaTabela));
+        System.out.println("Empresa: "+view.getIdEmpresaoculto().getText());
    
    }
    
@@ -456,7 +457,7 @@ if(i == JOptionPane.YES_OPTION) {
             executar.setString(2,view.getCpfFuncinoarioAlterar().getText());
             executar.setString(3,view.getRgFuncinoarioAlterar().getText());
             executar.setString(4,view.getDtAdmFuncinoarioAlterar().getText());
-            executar.setInt(5, Integer.parseInt(view.getIdEmpresaOculto().getText()));
+            executar.setInt(5, Integer.parseInt(view.getIdEmpresaoculto().getText()));
             executar.setInt(6,Integer.parseInt(view.getIdSetorOculto().getText()));
             executar.setString(7,view.getChapaAlterar().getText());
             executar.setString(8,view.getObservacaoFuncinoarioAlterar().getText());

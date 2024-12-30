@@ -6,6 +6,7 @@
 package View.Relatorios;
 
 import Controller.RelatorioEmpresaController;
+import Controller.classeUtilitaria;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,7 +24,8 @@ import javax.swing.JTextField;
 public class relatorioEmpresa extends javax.swing.JFrame {
 
     private  RelatorioEmpresaController controller;  
-
+     
+    
     /**
      * Creates new form relatorioEmpresa
      */
@@ -32,6 +34,7 @@ public class relatorioEmpresa extends javax.swing.JFrame {
         controller = new RelatorioEmpresaController(this);
         controller.ocultarCamposEmpresa();
         controller.bloquearcamposeditar();
+     
 
     }
 
@@ -81,15 +84,16 @@ public class relatorioEmpresa extends javax.swing.JFrame {
         botaoconsultarmenu = new javax.swing.JMenu();
         botaoEditar = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
-        jMenu1 = new javax.swing.JMenu();
+        botaoExcluir = new javax.swing.JMenu();
         jmIncluir = new javax.swing.JMenu();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Consulta de Cadastro de Empresa");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel1.setText("Descrição");
 
+        descEmpresa.setToolTipText("Digite uma Descrição");
         descEmpresa.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 descEmpresaKeyReleased(evt);
@@ -98,6 +102,7 @@ public class relatorioEmpresa extends javax.swing.JFrame {
 
         jLabel2.setText("CPF/CNPJ");
 
+        cnpjEmpresa.setToolTipText("Digite um CNPJ");
         cnpjEmpresa.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 cnpjEmpresaKeyReleased(evt);
@@ -107,8 +112,11 @@ public class relatorioEmpresa extends javax.swing.JFrame {
         lblCadastroEpiDecolverTroca.setText("Situação");
 
         cboSitEmpresa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ativo", "Excluido" }));
+        cboSitEmpresa.setToolTipText("Situação Cadastral");
 
         jLabel3.setText("Empresa");
+
+        nomeEmpresa.setToolTipText("Nome Fantasia da Empresa");
 
         TabelaDescEmpresa.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -180,8 +188,15 @@ public class relatorioEmpresa extends javax.swing.JFrame {
         );
 
         botaoSairTela.setText("Sair");
+        botaoSairTela.setToolTipText("Sair");
+        botaoSairTela.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botaoSairTelaMouseClicked(evt);
+            }
+        });
 
         botaoConsultarTela.setText("Consultar");
+        botaoConsultarTela.setToolTipText("Consultar");
         botaoConsultarTela.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 botaoConsultarTelaMouseClicked(evt);
@@ -192,17 +207,28 @@ public class relatorioEmpresa extends javax.swing.JFrame {
 
         jLabel5.setText("Cód. ");
 
+        codAlterar.setToolTipText("Código Interno");
+
         jLabel6.setText("Descrição");
+
+        descAlterar.setToolTipText("Descrição");
 
         jLabel7.setText("CPF/CNPJ");
 
+        cnpjcpfAlterar.setToolTipText("CNPJ");
+
         jLabel8.setText("I.E.");
 
+        ieAlterar.setToolTipText("Inscrição Estadual");
+
         jLabel9.setText("Endereço");
+
+        enderecoAlterar.setToolTipText("Endereço ");
 
         lblCadastroEpiDecolverTroca1.setText("Situação ");
 
         cboSituacaoAlterar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ativo", "Excluido" }));
+        cboSituacaoAlterar.setToolTipText("Sitação Cadastral");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -273,6 +299,7 @@ public class relatorioEmpresa extends javax.swing.JFrame {
 
             }
         ));
+        tabelaResultadoConsultaEmpresa.setToolTipText("Selecione uma Empresa para Exclusão ou edição de Cadastro");
         jScrollPane1.setViewportView(tabelaResultadoConsultaEmpresa);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -297,6 +324,7 @@ public class relatorioEmpresa extends javax.swing.JFrame {
         jLabel4.setText("Editar Dados Empresa");
 
         botaoAtualizarDados.setText("Atualizar Dados");
+        botaoAtualizarDados.setToolTipText("Atualizar Dados Edittados");
         botaoAtualizarDados.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 botaoAtualizarDadosMouseClicked(evt);
@@ -304,9 +332,11 @@ public class relatorioEmpresa extends javax.swing.JFrame {
         });
 
         botaoconsultarmenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icones/iconeConsultar24px.png"))); // NOI18N
+        botaoconsultarmenu.setToolTipText("Consultar");
         jMenuBar1.add(botaoconsultarmenu);
 
         botaoEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icones/iconeEditar24px.png"))); // NOI18N
+        botaoEditar.setToolTipText("Editar");
         botaoEditar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 botaoEditarMouseClicked(evt);
@@ -315,17 +345,20 @@ public class relatorioEmpresa extends javax.swing.JFrame {
         jMenuBar1.add(botaoEditar);
 
         jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icones/iconeImprimir24px.png"))); // NOI18N
+        jMenu3.setToolTipText("Imprimir");
         jMenuBar1.add(jMenu3);
 
-        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icones/iconeExcluir32px.png"))); // NOI18N
-        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+        botaoExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icones/iconeExcluir32px.png"))); // NOI18N
+        botaoExcluir.setToolTipText("Excluir Cadastro");
+        botaoExcluir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu1MouseClicked(evt);
+                botaoExcluirMouseClicked(evt);
             }
         });
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(botaoExcluir);
 
         jmIncluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icones/iconeNovo24px.png"))); // NOI18N
+        jmIncluir.setToolTipText("Novo Cadastro");
         jmIncluir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jmIncluirMouseClicked(evt);
@@ -414,9 +447,9 @@ public class relatorioEmpresa extends javax.swing.JFrame {
          controller.consultarEmpresaCNPJ();
     }//GEN-LAST:event_cnpjEmpresaKeyReleased
 
-    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+    private void botaoExcluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoExcluirMouseClicked
        controller.excluirEmpreesa();
-    }//GEN-LAST:event_jMenu1MouseClicked
+    }//GEN-LAST:event_botaoExcluirMouseClicked
 
     private void botaoEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoEditarMouseClicked
         try {   
@@ -435,15 +468,21 @@ public class relatorioEmpresa extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_botaoAtualizarDadosMouseClicked
 
+    private void botaoSairTelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoSairTelaMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_botaoSairTelaMouseClicked
+
     /**
      * @param args the command line arguments
      */
+    
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+        */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -462,12 +501,12 @@ public class relatorioEmpresa extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+    /* Create and display the form */
+  /*      java.awt.EventQueue.invokeLater(new Runnable() {
+           public void run() {
                 new relatorioEmpresa().setVisible(true);
             }
-        });
+        });*/
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -475,6 +514,7 @@ public class relatorioEmpresa extends javax.swing.JFrame {
     private javax.swing.JButton botaoAtualizarDados;
     private javax.swing.JButton botaoConsultarTela;
     private javax.swing.JMenu botaoEditar;
+    private javax.swing.JMenu botaoExcluir;
     private javax.swing.JButton botaoSairTela;
     private javax.swing.JMenu botaoconsultarmenu;
     private javax.swing.JComboBox<String> cboSitEmpresa;
@@ -495,7 +535,6 @@ public class relatorioEmpresa extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
