@@ -5,7 +5,7 @@
  */
 package Controller;
 
-import View.Relatorios.relatorioSetorEpi;
+import View.Relatorios.intRelatorioSetorEPI;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,16 +20,24 @@ import net.proteanit.sql.DbUtils;
  */
 public class RelatorioSetorEpiController {
 
-     private relatorioSetorEpi view;
+     private intRelatorioSetorEPI view;
     
      Connection conexaoBD = new conexaoBancoController().conectarBanco();
      PreparedStatement executar = null;
      ResultSet rs = null;
     
-    public RelatorioSetorEpiController(relatorioSetorEpi view) {
+    public RelatorioSetorEpiController(intRelatorioSetorEPI view) {
         this.view = view;
         
     }
+    
+   public void ocultarcampos(){
+       
+       view.getBotaoCONSULTAR().setEnabled(false);
+       view.getBotaoExcluir().setEnabled(false);
+        
+       
+   }
     
     
   public void consultarSetorRelatorio(){

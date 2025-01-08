@@ -30,14 +30,10 @@ public class relatorioFuncionario extends javax.swing.JFrame {
      * Creates new form relatorioFuncionario
      */
     
-  private final RelatorioFuncionarioController controller;  
-  
+   
     public relatorioFuncionario() {
         initComponents();
-        controller = new RelatorioFuncionarioController(this);
-        controller.oculatarCampos();
-        controller.bloquearCamposEditar();
-        getConsultaEmpresa().setText("<html>Consultar<br>Empresa</html>");
+        
     }
 
     /**
@@ -673,7 +669,7 @@ public class relatorioFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelarFuncionarioMouseClicked
 
     private void nomeFuncionarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nomeFuncionarioKeyReleased
-      controller.preencherIdOculto();
+      
     }//GEN-LAST:event_nomeFuncionarioKeyReleased
 
     private void jmConsultarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmConsultarMouseClicked
@@ -682,17 +678,17 @@ public class relatorioFuncionario extends javax.swing.JFrame {
 
     private void btnConsultarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultarMouseClicked
         
-        controller.consultarNomeFuncionario();
+        //controller.consultarNomeFuncionario();
     }//GEN-LAST:event_btnConsultarMouseClicked
 
     private void tabelaNomeConsultaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaNomeConsultaMouseClicked
         
-        controller. selecionarCampos();
+        //controller. selecionarCampos();
     }//GEN-LAST:event_tabelaNomeConsultaMouseClicked
 
     private void consultaEmpresaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_consultaEmpresaMouseClicked
             
-        controller.consultaFuncionarioPorEmpresa();   
+        //controller.consultaFuncionarioPorEmpresa();   
     }//GEN-LAST:event_consultaEmpresaMouseClicked
 
     private void nomeempresaFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeempresaFuncionarioActionPerformed
@@ -700,20 +696,20 @@ public class relatorioFuncionario extends javax.swing.JFrame {
 
     private void cnpjEmpresaConsultaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cnpjEmpresaConsultaKeyReleased
         
-        controller.consultarEmpresa();
+        //controller.consultarEmpresa();
        
     }//GEN-LAST:event_cnpjEmpresaConsultaKeyReleased
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
-        controller.excluirFuncionario();
+        //controller.excluirFuncionario();
     }//GEN-LAST:event_jMenu1MouseClicked
 
     private void nomeSetorFuncinoarioAlterarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nomeSetorFuncinoarioAlterarKeyReleased
-        controller.setarSetorEditar();
+        //controller.setarSetorEditar();
     }//GEN-LAST:event_nomeSetorFuncinoarioAlterarKeyReleased
 
     private void NomeempresaFuncinarioalterarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NomeempresaFuncinarioalterarKeyReleased
-        controller.setarEmpresaEditar();
+        //controller.setarEmpresaEditar();
     }//GEN-LAST:event_NomeempresaFuncinarioalterarKeyReleased
 
     private void nomeSetorFuncinoarioAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeSetorFuncinoarioAlterarActionPerformed
@@ -721,31 +717,23 @@ public class relatorioFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_nomeSetorFuncinoarioAlterarActionPerformed
 
     private void botaoEditarMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoEditarMenuMouseClicked
-      try {
-          controller.editarFuncinoario();
-          controller.habilitarCamposEditar();
-
-          
-      } catch (SQLException ex) {
-          Logger.getLogger(relatorioFuncionario.class.getName()).log(Level.SEVERE, null, ex);
-      }
-        
+      
+          //controller.editarFuncinoario();
+          //controller.habilitarCamposEditar();  
     }//GEN-LAST:event_botaoEditarMenuMouseClicked
 
     private void botaoAtualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoAtualizarMouseClicked
-      try {
-          controller.alteracamposFuncionario();
-      } catch (SQLException ex) {
-          Logger.getLogger(relatorioFuncionario.class.getName()).log(Level.SEVERE, null, ex);
-      }
+      
+          //controller.alteracamposFuncionario();
+      
     }//GEN-LAST:event_botaoAtualizarMouseClicked
 
     private void tabelaConsultaEmpresaAlterarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaConsultaEmpresaAlterarMouseClicked
-        controller.empresaselecionada();
+        //controller.empresaselecionada();
     }//GEN-LAST:event_tabelaConsultaEmpresaAlterarMouseClicked
 
     private void tabelaConsultaSetorAlterarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaConsultaSetorAlterarMouseClicked
-        controller.setorselecionada();
+      //  controller.setorselecionada();
     }//GEN-LAST:event_tabelaConsultaSetorAlterarMouseClicked
 
     /**

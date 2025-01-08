@@ -41,7 +41,7 @@ public class usuario {
         this.email = email;
         this.situacaoCadastro = situacaoCadastro;
     }
-
+ 
     
     
     public String getEmail() {

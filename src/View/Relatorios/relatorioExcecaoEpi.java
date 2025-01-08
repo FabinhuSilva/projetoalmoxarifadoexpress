@@ -26,7 +26,7 @@ public class relatorioExcecaoEpi extends javax.swing.JFrame {
       
     public relatorioExcecaoEpi() {
         initComponents();
-        controller = new RelatorioExcecaoEpiController(this);
+        //controller = new RelatorioExcecaoEpiController(this);
         controller.ocultarCamposEx();
         
     }

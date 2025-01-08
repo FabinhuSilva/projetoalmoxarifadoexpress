@@ -2,7 +2,12 @@
 package View;
 
 
+import Controller.classeUtilitaria;
+import Controller.conexaoBancoController;
 import Controller.loginController;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -11,7 +16,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-/**
+/** 
  *
  * @author Fabinhu
  * 
@@ -19,12 +24,19 @@ import javax.swing.JTextField;
 public class login extends javax.swing.JFrame {
 
     private final loginController Controller;
-
+    
+          
     public login() {
         initComponents();
         Controller = new loginController(this);
+       
+      
        }
 
+    
+   
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -83,6 +95,11 @@ public class login extends javax.swing.JFrame {
 
         jbLoginEntrar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jbLoginEntrar.setText("Entrar");
+        jbLoginEntrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jbLoginEntrarMouseClicked(evt);
+            }
+        });
         jbLoginEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbLoginEntrarActionPerformed(evt);
@@ -130,7 +147,7 @@ public class login extends javax.swing.JFrame {
         try {
             Controller.autenticarLogin();
             this.dispose();
-            
+             
         } catch (SQLException ex) {
             System.out.println("Erro Botao Salvar : "+ex);
         }
@@ -150,6 +167,10 @@ public class login extends javax.swing.JFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
     System.exit(0);
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jbLoginEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbLoginEntrarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbLoginEntrarMouseClicked
 
     /**
      * @param args the command line arguments

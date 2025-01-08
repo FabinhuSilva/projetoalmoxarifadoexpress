@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import View.Relatorios.intRelatorioUsuario;
 import View.Relatorios.relatorioUsuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -22,7 +23,7 @@ import net.proteanit.sql.DbUtils;
 public class RelatorioUsuarioController {
  
     
-      private final relatorioUsuario view;
+      private final intRelatorioUsuario view;
         Connection conexao = null;
         PreparedStatement pst = null;
         ResultSet rs = null;
@@ -31,7 +32,7 @@ public class RelatorioUsuarioController {
         Connection conexaoBD = new conexaoBancoController().conectarBanco();
      
         
-    public RelatorioUsuarioController(relatorioUsuario view) {
+    public RelatorioUsuarioController(intRelatorioUsuario view) {
         this.view = view;
         
     }
@@ -138,6 +139,9 @@ public class RelatorioUsuarioController {
     
      
      public void oculatarCampos(){
+         
+         view.getBotaoConsultar().setEnabled(false);
+         view.getJmConsultar().setEnabled(false);
          
          view.getOcultoIdUsuario().setVisible(false);
          view.getCodUsuarioAlterar().setEditable(false);

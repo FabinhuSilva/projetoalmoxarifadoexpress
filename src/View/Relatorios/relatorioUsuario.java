@@ -29,7 +29,7 @@ public class relatorioUsuario extends javax.swing.JFrame {
      */
     public relatorioUsuario() {
         initComponents();
-        controller = new RelatorioUsuarioController(this);
+       // controller = new RelatorioUsuarioController(this);
         controller.oculatarCampos();
         
     }

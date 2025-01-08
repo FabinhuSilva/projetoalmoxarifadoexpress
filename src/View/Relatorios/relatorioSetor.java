@@ -26,7 +26,7 @@ public class relatorioSetor extends javax.swing.JFrame {
     
     public relatorioSetor() {
         initComponents();
-        controller = new RelatorioSetorController(this);
+      // controller = new RelatorioSetorController(this);
         controller.oculataCamposView();
         
            
@@ -76,6 +76,11 @@ public class relatorioSetor extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Consulta e Edição de Setor");
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
 
         PainelConsultaSetor.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -390,6 +395,10 @@ public class relatorioSetor extends javax.swing.JFrame {
     private void botaoAtualizarCadastroSetorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoAtualizarCadastroSetorMouseClicked
        controller.atualizarCadastroSetor();
     }//GEN-LAST:event_botaoAtualizarCadastroSetorMouseClicked
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        dispose();
+    }//GEN-LAST:event_formMouseClicked
 
     /**
      * @param args the command line arguments

@@ -27,7 +27,7 @@ public class relatorioSetorEpi extends javax.swing.JFrame {
     
     public relatorioSetorEpi() {
         initComponents();
-        controller = new RelatorioSetorEpiController(this);
+        //controller = new RelatorioSetorEpiController(this);
         /*nao mostrar o cabeçalho da tabela 
         
            Neste Exemplo, ele oculta mas fica a linha cinza

@@ -6,7 +6,7 @@
 package Controller;
 
 
-import View.Relatorios.relatorioSetor;
+import View.Relatorios.intRelatorioSetor;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,9 +18,9 @@ import net.proteanit.sql.DbUtils;
 
 public class RelatorioSetorController {
     
-    private relatorioSetor view;
+    private intRelatorioSetor view;
    
-    public RelatorioSetorController(relatorioSetor view) {
+    public RelatorioSetorController(intRelatorioSetor view) {
         this.view = view;
     }
       

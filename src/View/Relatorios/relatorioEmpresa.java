@@ -31,7 +31,7 @@ public class relatorioEmpresa extends javax.swing.JFrame {
      */
     public relatorioEmpresa() {
         initComponents();
-        controller = new RelatorioEmpresaController(this);
+        //controller = new RelatorioEmpresaController(this);
         controller.ocultarCamposEmpresa();
         controller.bloquearcamposeditar();
      

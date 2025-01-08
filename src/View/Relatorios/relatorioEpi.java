@@ -29,7 +29,7 @@ public class relatorioEpi extends javax.swing.JFrame {
      */
     public relatorioEpi() {
         initComponents();
-        controller = new RelatorioEpiController(this);
+        //controller = new RelatorioEpiController(this);
         controller.ocultarCampos();
         
     }

@@ -6,12 +6,16 @@
 package Controller;
 
 import View.menuPrincipal;
-import java.awt.Component;
-import java.sql.SQLException;
-import javax.swing.ImageIcon;
-import javax.swing.JDesktopPane;
-import javax.swing.JInternalFrame;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
+import Controller.loginController;
+import java.text.DateFormat;
+import java.util.Calendar;
+import javax.swing.JLabel;
 
 /**
  *
@@ -21,12 +25,19 @@ public class classeUtilitaria {
 
      private final menuPrincipal view;
     
+       
+     
     public classeUtilitaria(menuPrincipal view) {
         this.view = view;
        
     }
     
-    
+      Connection conexaoBD = new conexaoBancoController().conectarBanco();
+      PreparedStatement pst = null;
+      ResultSet rs = null;
+      PreparedStatement executar = null; 
+      
+       
     
 public void encerrarAplicativo(){
         
@@ -39,12 +50,35 @@ if(i == JOptionPane.YES_OPTION) {
 }else if(i == JOptionPane.CANCEL_OPTION) {
    
 }
-  
-    
-    
-    
-    
-    }
-}    
-    
 
+}
+
+public void atualizarData(){
+    
+    Date dataHoraAtual = new Date();
+    String dataFormatada = new SimpleDateFormat("dd/MM/YYYY").format(dataHoraAtual);
+    view.getData().setText(dataFormatada); 
+  
+   
+}
+
+public void atualizarHora(){
+ 
+    //view.getHora().setBounds(10,37,60,20);
+    Thread th = new Thread(new Runnable() { //cria uma thread
+        public void run() {
+            while(true) { //roda indefinidamente
+                Date data = Calendar.getInstance().getTime();
+                DateFormat h = DateFormat.getTimeInstance();
+                view.getHora().setText(h.format(data));     
+                try {
+                    Thread.sleep(1000); //espera 1 segundo para fazer a nova evolução
+                } catch(InterruptedException ex){
+                }
+            }
+        }
+    }); th.start();
+    
+}
+
+}
