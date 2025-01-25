@@ -64,12 +64,8 @@ public class loginController {
         String usuarioLogin = view.getTxtloginUsuario().getText();
         String senhaLogin = view.getTxtLoginSenha().getText();
         
-        
-        
-        
         usuario usuarioSenhaLogin = new usuario(usuarioLogin, senhaLogin);
-        
-        
+          
         //Verificar se Existe no Banco
         
            usuarioDAO usuariodao = new usuarioDAO(conexaoBD);
@@ -80,12 +76,10 @@ public class loginController {
        login menuLogin = new login();
         if(usuarioCadastrado){
        menuPrincipal telademenu  = new menuPrincipal();
+       escreverNome();     
        //telademenu.setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
        telademenu.setVisible(true); 
-       
-   
-       
-       
+      
              }else{
             // Icones a 32px para caixa de mensagem
             ImageIcon iconeSalvo = new ImageIcon("c:\\almoxarifadoExpress\\icone\\erro.png");
@@ -99,6 +93,34 @@ public class loginController {
        configuracaoBanco.setVisible(true);
     }
  
+    
+          public void escreverNome(){
+        
+        View.login lg = new View.login();  
+       
+        String nomeUsuario = view.getTxtloginUsuario().getText();
+        System.out.println(nomeUsuario);
+          String sql = "SELECT * FROM usuario where login = '"+nomeUsuario+"'";
+             
+       try {
+    
+            executar = conexaoBD.prepareStatement(sql);               rs=executar.executeQuery();
+             if(rs.next()){
+            menuPrincipal telademenu  = new menuPrincipal();
+         telademenu.nomeUsuarioMenu.setText(rs.getString(2));
+             }
+            
+       }catch(SQLException e){
+           System.out.println(e);
+       }  
+
+       
+      }
+    
+    
+    
+    
+  }
     
     /*
 
@@ -176,4 +198,4 @@ public class loginController {
     
     
     
-}
+

@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="entregadeEPI" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="61a608ca-3eba-439e-9b07-03e1e4b4393a">
+	<property name="ireport.zoom" value="2.200000000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Titulo" hAlign="Center" vAlign="Middle" fontName="Arial Black" fontSize="20" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="subcabeçalho" hAlign="Left" fontName="Times New Roman" fontSize="10" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<parameter name="codigoFuncionario" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[$F{codigofunc}]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     func.chapa AS chapa,
+     func.id as codigoFunc,
+     func.dataadmissao as dtAdimissao,
+     func.nome AS nomeFuncionario,
+     func.cpf AS cpfFuncionario,
+     func.rg AS rgFuncionario,
+     func.id_cargo AS codigoCargo,
+     cg.descricao AS DescricaoCargo,
+     emp.cnpj AS cnpjEmpresa,
+     func.id_empresa AS codigoEmpresa,
+     emp.descricao AS descricaoEmpresa,
+     func.id_setor AS codigoSetor,
+     st.nome AS nomeSetor,
+     cg.descricao AS cargoDescricao,
+     sepi.id_epi AS setEPI,
+     sepi.qtd_epi AS setQtdEpi,
+     e.descricao AS epiDescricao
+FROM
+     funcionario func
+     --INNER JOIN funcionarioepi as fepi ON func.id = fepi.id_funcionario
+     INNER JOIN empresa as emp ON func.id_empresa = emp.id
+     INNER JOIN setor as st ON func.id_setor = st.id
+     INNER JOIN cargo as cg ON func.id_cargo = cg.id
+     INNER JOIN epiexcecao as ex ON func.id = ex.id_funcionario
+     INNER JOIN setorepi as sepi ON st.id = sepi.id_setor
+     INNER JOIN epi as e ON sepi.id_epi = e.id
+WHERE
+     func.id = $P{codigoFuncionario}]]>
+	</queryString>
+	<field name="chapa" class="java.lang.String"/>
+	<field name="codigofunc" class="java.lang.Integer"/>
+	<field name="dtadimissao" class="java.lang.String"/>
+	<field name="nomefuncionario" class="java.lang.String"/>
+	<field name="cpffuncionario" class="java.lang.String"/>
+	<field name="rgfuncionario" class="java.lang.String"/>
+	<field name="codigocargo" class="java.math.BigDecimal"/>
+	<field name="descricaocargo" class="java.lang.String"/>
+	<field name="cnpjempresa" class="java.lang.String"/>
+	<field name="codigoempresa" class="java.lang.Integer"/>
+	<field name="descricaoempresa" class="java.lang.String"/>
+	<field name="codigosetor" class="java.lang.Integer"/>
+	<field name="nomesetor" class="java.lang.String"/>
+	<field name="cargodescricao" class="java.lang.String"/>
+	<field name="setepi" class="java.lang.Long"/>
+	<field name="setqtdepi" class="java.lang.Long"/>
+	<field name="epidescricao" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="69" splitType="Stretch">
+			<rectangle>
+				<reportElement x="125" y="0" width="430" height="68" uuid="7e26a2fe-3ed0-4bda-92f2-a880ec27e892"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="0" width="125" height="68" uuid="09d16eb2-1a79-4725-b15d-594c8edd398f"/>
+			</rectangle>
+			<staticText>
+				<reportElement style="Titulo" x="125" y="0" width="430" height="68" uuid="65ae6925-1ad9-4fd7-8c51-abafc526fdef"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial Black" size="16" isBold="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Ficha de Controle de Entrega de Equipamentos e Materiais de Segurança]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement positionType="Float" mode="Opaque" x="24" y="10" width="80" height="44" uuid="cfbf2213-dc3c-4891-80ec-a3775639da22"/>
+				<jr:Codabar xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" textPosition="bottom">
+					<jr:codeExpression><![CDATA[$F{cpffuncionario}]]></jr:codeExpression>
+				</jr:Codabar>
+			</componentElement>
+			<staticText>
+				<reportElement style="subcabeçalho" x="31" y="54" width="38" height="14" uuid="06f55a6f-5d4b-41c6-ba74-292f99c91c46"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Chapa:  ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="69" y="54" width="56" height="14" uuid="d13210d2-c117-4626-9dd9-4b905f43fc5d"/>
+				<textFieldExpression><![CDATA[$F{chapa}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="63" splitType="Stretch">
+			<rectangle>
+				<reportElement x="1" y="17" width="320" height="14" uuid="0dd05934-fc24-4dab-b279-a2cd3670e0be"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="321" y="17" width="233" height="14" uuid="78ecb4ee-dddd-4268-9824-18986fade49b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="1" y="31" width="320" height="15" uuid="856dbd0c-a14f-462b-ba15-8db63f97a0bd"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="321" y="31" width="233" height="15" uuid="d5d6581e-a619-489b-9497-d7203d877bcf"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="1" y="46" width="320" height="15" uuid="0d3bef58-fd19-4ae7-beab-07ad0f4f6a6b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="321" y="46" width="233" height="15" uuid="1f66feb4-36b5-462a-b2d5-fc5ea358b047"/>
+			</rectangle>
+			<staticText>
+				<reportElement style="subcabeçalho" x="1" y="18" width="58" height="14" uuid="5bb0c2df-fef0-434c-9716-251b35cd08a4"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Funcionario:  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="subcabeçalho" x="321" y="32" width="58" height="14" uuid="eb544332-76ab-49cd-880d-8215a645c22d"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Admissão:  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="subcabeçalho" x="1" y="47" width="58" height="14" uuid="a99dd374-cf3b-4950-963f-fcd5370f9231"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Empresa:  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="subcabeçalho" x="344" y="48" width="33" height="14" uuid="8c0f0c5a-b0a3-4492-93ef-8be88cce5f5d"/>
+				<text><![CDATA[CNPJ : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="subcabeçalho" x="1" y="32" width="58" height="14" uuid="f7dd4b70-543f-49be-8cd7-aa3f94653a97"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Setor:  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="subcabeçalho" x="344" y="17" width="34" height="14" uuid="bee0d53b-1959-4c4b-a3fa-b23af180f19c"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Cargo:  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="subcabeçalho" x="85" y="18" width="12" height="14" uuid="a1e94bb0-0053-4aec-b870-c92773730039"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[ - ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="382" y="17" width="169" height="14" uuid="86900e4e-aedb-4bb7-88bd-7a673ea3ba9c"/>
+				<textFieldExpression><![CDATA[$F{descricaocargo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="58" y="18" width="29" height="14" uuid="f919d063-8700-41cc-a243-30de22535f77"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{codigofunc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="97" y="18" width="176" height="14" uuid="de79fe63-baea-42a3-a489-8957dc792ab0"/>
+				<textFieldExpression><![CDATA[$F{nomefuncionario}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="subcabeçalho" x="85" y="32" width="12" height="14" uuid="bb5e98f2-0b72-4c3d-9862-ae6cc8253ed2"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[ - ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="59" y="32" width="28" height="14" uuid="a2df9f17-ad5c-46c9-9be8-f28e6553915b"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{codigosetor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="98" y="32" width="179" height="14" uuid="f08a37ac-182d-43dc-9de5-84d6e2b0e7cb"/>
+				<textFieldExpression><![CDATA[$F{nomesetor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="67" y="47" width="204" height="14" uuid="6646aa8b-ad7e-4c63-ae41-a4483096664f"/>
+				<textFieldExpression><![CDATA[$F{descricaoempresa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="383" y="47" width="100" height="14" uuid="33be44f8-2f69-478a-8396-b4fe7ebdeea4"/>
+				<textFieldExpression><![CDATA[$F{cnpjempresa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="382" y="32" width="100" height="14" uuid="75ff6768-5f97-4db4-bac5-f8b9078006f1"/>
+				<textFieldExpression><![CDATA[$F{dtadimissao}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="30">
+			<rectangle>
+				<reportElement x="0" y="9" width="554" height="17" uuid="dc5f900e-799e-4713-9de3-58a9422b695c"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="294" y="9" width="27" height="14" uuid="4f1a738a-a531-4e0e-93ac-83fc87538aa6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Qtd.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="87" y="9" width="176" height="14" uuid="cace34bb-e8c6-4c72-b1d1-a00c52e4b57f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Descrição EPI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="10" width="29" height="14" uuid="c1934a5c-c9bf-42fb-b4e3-df39b1be84a2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Cód.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-7" y="-131" width="28" height="68" uuid="757dab52-7d2c-44ac-8d40-517e4df41fdd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Lista de EPI]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="14" splitType="Stretch">
+			<textField>
+				<reportElement x="40" y="0" width="29" height="14" uuid="6650d2e3-c6ad-4482-b874-132bac8e560c"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{setepi}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="294" y="0" width="27" height="14" uuid="73fd34cb-8988-4936-84e6-0b03d8b34028"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{setqtdepi}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="87" y="0" width="203" height="14" uuid="1336ed6b-4f14-4cd6-a4f0-fa47013f1b52"/>
+				<textFieldExpression><![CDATA[$F{epidescricao}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="372" y="1" width="178" height="13" uuid="09a20ce6-24f7-4706-9d9f-1de1586e3127"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="355" y="-1" width="11" height="15" uuid="b9793163-6ec3-402a-9657-d5dfaf1e8105"/>
+				<text><![CDATA[A.]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="194" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="1" width="555" height="147" uuid="90ae2781-c324-45bd-9d8d-35eb6b59e22c"/>
+			</rectangle>
+			<staticText>
+				<reportElement style="subcabeçalho" x="4" y="5" width="546" height="103" uuid="59615e5a-e1f4-46eb-8fac-fe17328e1c8c"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[Declaro ter recevido os Equipamentos de Proteção Individual(EPI) descritos nesta ficha e indicados pela Segurança Industrial e Meio Ambiente (SIMA) desta empresa. De acordo com a legislação em vigor, reconheço que os equipamentos se adaptam perfeitamente em mim, pra preservação da minha integridade fisica no desempenho das minhas funções, responsabilizando-me pela sua conservação, higiene e guarda, comunicando qualquer alteração que o torne improprio. Declaro ainda, que fui orientado e treinado quanto ao uso correto, conservação e finalidade a que se destina. Quando os EPI's recebidos forem danificados ou extraviados, tal situação/fato deve ser informado imediatamente ao gestor para a correta substituição do EPI. Fico ciente da obrigatoriedade do uso e da devolução ao término do meu contrato de trabalho ou de indenização à empresa, em caso de dano ou extravio.]]></text>
+			</staticText>
+			<line>
+				<reportElement x="141" y="121" width="250" height="1" uuid="3139d020-6240-4c2d-8969-5c829b668bd2"/>
+			</line>
+			<staticText>
+				<reportElement style="subcabeçalho" x="143" y="122" width="73" height="15" uuid="d64b83f7-4e0a-4f1a-aa8c-d24c9563352f"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Colaborador (a):]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="456" y="172" width="100" height="20" uuid="8c0bfffa-6f4b-4f95-97b5-a18417ddebe1"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="4" y="172" width="100" height="20" uuid="06ef4d05-8fd6-4919-bef5-b0c714511394"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="217" y="122" width="174" height="15" uuid="af88287d-e7d4-4bf0-b1fa-0b01a2647772"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{nomefuncionario}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

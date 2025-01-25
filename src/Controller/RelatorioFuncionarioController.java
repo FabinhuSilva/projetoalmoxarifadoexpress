@@ -6,7 +6,6 @@
 package Controller;
 
 import View.Relatorios.intRelatorioFuncionario;
-import View.Relatorios.relatorioFuncionario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -363,6 +362,7 @@ if(i == JOptionPane.YES_OPTION) {
              view.getObservacaoFuncinoarioAlterar().setText( rs.getString("observacao"));
              // ComboBox Pega o Valor da variavel : codigosituacaocadastro
              view.getChapaAlterar().setText(rs.getString("chapa"));
+             
                            
           }
        

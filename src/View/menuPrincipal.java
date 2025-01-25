@@ -13,6 +13,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JDesktopPane;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 import javax.swing.JTextField;
 
 /**
@@ -21,7 +23,7 @@ import javax.swing.JTextField;
  */
 public class menuPrincipal extends javax.swing.JFrame {
 
-    
+    private loginController lg;
     private  classeUtilitaria controller; 
     private View.login login;
     
@@ -33,11 +35,10 @@ public class menuPrincipal extends javax.swing.JFrame {
     public menuPrincipal() {
         initComponents();
         controller = new classeUtilitaria(this);
-        jmRelatorio.setEnabled(false);
-        jmImportacao.setEnabled(false);
+        controller.bloquearMenus();
         controller.atualizarData();
         controller.atualizarHora();
-        
+                
                 
     }
     
@@ -57,6 +58,7 @@ public class menuPrincipal extends javax.swing.JFrame {
         desktop = new javax.swing.JDesktopPane();
         hora = new javax.swing.JLabel();
         data = new javax.swing.JLabel();
+        nomeUsuarioMenu = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jmCadastroEPI = new javax.swing.JMenu();
         jmCadastroFuncionario = new javax.swing.JMenuItem();
@@ -66,10 +68,11 @@ public class menuPrincipal extends javax.swing.JFrame {
         jmCadastroUsuario = new javax.swing.JMenuItem();
         menuEPISetor = new javax.swing.JMenuItem();
         jmCadastroExEpi = new javax.swing.JMenuItem();
-        jmEntregaEpi = new javax.swing.JMenu();
-        jmOpercaoEntregaEPI = new javax.swing.JMenuItem();
-        jmOperacaoAjusteEstoque = new javax.swing.JMenuItem();
-        jmOperacaoAgendaEntregaEPI = new javax.swing.JMenuItem();
+        cadastroCargo = new javax.swing.JMenuItem();
+        imEntregaEpi = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        imAgendaEntrega = new javax.swing.JMenuItem();
+        imAjusteEstoque = new javax.swing.JMenuItem();
         jmRelatorio = new javax.swing.JMenu();
         jmRelatorioEstoque = new javax.swing.JMenuItem();
         jmRelatorioEntregasEpi = new javax.swing.JMenu();
@@ -83,21 +86,21 @@ public class menuPrincipal extends javax.swing.JFrame {
         setTitle("AlmoxarifadoExpress");
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(desktop, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1220, 820));
 
         hora.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        hora.setForeground(new java.awt.Color(255, 255, 255));
+        hora.setForeground(new java.awt.Color(0, 0, 0));
         hora.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         hora.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icones/iconeRelogio24px.png"))); // NOI18N
-        desktop.add(hora);
-        hora.setBounds(1090, 820, 120, 30);
+        getContentPane().add(hora, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 820, 150, -1));
 
         data.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        data.setForeground(new java.awt.Color(255, 255, 255));
+        data.setForeground(new java.awt.Color(0, 0, 0));
         data.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icones/iconeCalendario24px.png"))); // NOI18N
-        desktop.add(data);
-        data.setBounds(10, 820, 130, 30);
+        getContentPane().add(data, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 820, 130, -1));
 
-        getContentPane().add(desktop, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1220, 850));
+        nomeUsuarioMenu.setText("Usuario Logado");
+        getContentPane().add(nomeUsuarioMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 820, 90, 30));
 
         jmCadastroEPI.setText("Cadastro");
         jmCadastroEPI.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -184,31 +187,35 @@ public class menuPrincipal extends javax.swing.JFrame {
         });
         jmCadastroEPI.add(jmCadastroExEpi);
 
+        cadastroCargo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icones/iconeCargo24px.png"))); // NOI18N
+        cadastroCargo.setText("Cargo");
+        cadastroCargo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastroCargoActionPerformed(evt);
+            }
+        });
+        jmCadastroEPI.add(cadastroCargo);
+
         jMenuBar1.add(jmCadastroEPI);
 
-        jmEntregaEpi.setText("Operação");
-        jmEntregaEpi.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jmEntregaEpiMouseClicked(evt);
+        imEntregaEpi.setText("Operacional");
+
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icones/iconeEntregaEpi16px (1).png"))); // NOI18N
+        jMenuItem2.setText("Entrega de EPI");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
             }
         });
+        imEntregaEpi.add(jMenuItem2);
 
-        jmOpercaoEntregaEPI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icones/iconeEntregaEpi24px.png"))); // NOI18N
-        jmOpercaoEntregaEPI.setText("Entrega de EPI");
-        jmOpercaoEntregaEPI.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jmOpercaoEntregaEPIMouseClicked(evt);
-            }
-        });
-        jmEntregaEpi.add(jmOpercaoEntregaEPI);
+        imAgendaEntrega.setText("Agenda de Entrega de EPI");
+        imEntregaEpi.add(imAgendaEntrega);
 
-        jmOperacaoAjusteEstoque.setText("Ajuste de Estoque");
-        jmEntregaEpi.add(jmOperacaoAjusteEstoque);
+        imAjusteEstoque.setText("Ajuste de Estoque");
+        imEntregaEpi.add(imAjusteEstoque);
 
-        jmOperacaoAgendaEntregaEPI.setText("Agenda de Entrega EPI");
-        jmEntregaEpi.add(jmOperacaoAgendaEntregaEPI);
-
-        jMenuBar1.add(jmEntregaEpi);
+        jMenuBar1.add(imEntregaEpi);
 
         jmRelatorio.setText("Relatórios");
 
@@ -327,33 +334,35 @@ public class menuPrincipal extends javax.swing.JFrame {
         RelSetor.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
-    private void jmEntregaEpiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmEntregaEpiMouseClicked
-         
-    }//GEN-LAST:event_jmEntregaEpiMouseClicked
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+       
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    private void jmOpercaoEntregaEPIMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmOpercaoEntregaEPIMouseClicked
-       View.EntregaEPI entrega = new View.EntregaEPI();
-        entrega.setVisible(true);
-    }//GEN-LAST:event_jmOpercaoEntregaEPIMouseClicked
+    private void cadastroCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroCargoActionPerformed
+         View.Relatorios.intRelatorioCargo cargo = new View.Relatorios.intRelatorioCargo();
+        desktop.add(cargo);
+        cargo.setVisible(true);
+    }//GEN-LAST:event_cadastroCargoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem cadastroCargo;
     private javax.swing.JLabel data;
     private javax.swing.JDesktopPane desktop;
     private javax.swing.JLabel hora;
+    private javax.swing.JMenuItem imAgendaEntrega;
+    private javax.swing.JMenuItem imAjusteEstoque;
+    private javax.swing.JMenu imEntregaEpi;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenu jmCadastroEPI;
     private javax.swing.JMenuItem jmCadastroEmpresa;
     private javax.swing.JMenuItem jmCadastroExEpi;
     private javax.swing.JMenuItem jmCadastroFuncionario;
     private javax.swing.JMenuItem jmCadastroUsuario;
-    private javax.swing.JMenu jmEntregaEpi;
     private javax.swing.JMenu jmImportacao;
     private javax.swing.JMenuItem jmImportacaoEntregaEPI;
-    private javax.swing.JMenuItem jmOperacaoAgendaEntregaEPI;
-    private javax.swing.JMenuItem jmOperacaoAjusteEstoque;
-    private javax.swing.JMenuItem jmOpercaoEntregaEPI;
     private javax.swing.JMenu jmRelatorio;
     private javax.swing.JMenu jmRelatorioEntregasEpi;
     private javax.swing.JMenuItem jmRelatorioEstoque;
@@ -362,6 +371,7 @@ public class menuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmiCadastroEPI;
     private javax.swing.JMenuItem jmmImportacaoEstoque;
     private javax.swing.JMenuItem menuEPISetor;
+    public static javax.swing.JLabel nomeUsuarioMenu;
     // End of variables declaration//GEN-END:variables
 
     public JDesktopPane getDesktop() {
@@ -386,6 +396,46 @@ public class menuPrincipal extends javax.swing.JFrame {
 
     public void setHora(JLabel hora) {
         this.hora = hora;
+    }
+
+    public JMenuItem getImAgendaEntrega() {
+        return imAgendaEntrega;
+    }
+
+    public void setImAgendaEntrega(JMenuItem imAgendaEntrega) {
+        this.imAgendaEntrega = imAgendaEntrega;
+    }
+
+    public JMenuItem getImAjusteEstoque() {
+        return imAjusteEstoque;
+    }
+
+    public void setImAjusteEstoque(JMenuItem imAjusteEstoque) {
+        this.imAjusteEstoque = imAjusteEstoque;
+    }
+
+    public JMenu getJmImportacao() {
+        return jmImportacao;
+    }
+
+    public void setJmImportacao(JMenu jmImportacao) {
+        this.jmImportacao = jmImportacao;
+    }
+
+    public JMenu getJmRelatorio() {
+        return jmRelatorio;
+    }
+
+    public void setJmRelatorio(JMenu jmRelatorio) {
+        this.jmRelatorio = jmRelatorio;
+    }
+
+    public static JLabel getNomeUsuarioMenu() {
+        return nomeUsuarioMenu;
+    }
+
+    public static void setNomeUsuarioMenu(JLabel nomeUsuarioMenu) {
+        menuPrincipal.nomeUsuarioMenu = nomeUsuarioMenu;
     }
 
 

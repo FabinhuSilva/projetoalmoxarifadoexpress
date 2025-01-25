@@ -13,6 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import Controller.loginController;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.util.Calendar;
 import javax.swing.JLabel;
@@ -81,4 +82,35 @@ public void atualizarHora(){
     
 }
 
+public void bloquearMenus(){
+    
+    view.getImAgendaEntrega().setEnabled(false);
+    view.getImAjusteEstoque().setEnabled(false);
+    view.getImAjusteEstoque().setEnabled(false);
+    view.getImAgendaEntrega().setEnabled(false);
+    view.getJmImportacao().setEnabled(false);
+    view.getJmImportacao().setEnabled(false);
+}
+
+/*
+      public void escreverNome(){
+        
+        View.login lg = new View.login();  
+        String nomeUsuario = lg.getTxtloginUsuario().getText();
+        System.out.println(nomeUsuario);
+          String sql = "SELECT login,nome FROM usuario where login = '"+nomeUsuario+"'";
+             
+       try {
+    
+            executar = conexaoBD.prepareStatement(sql);               rs=executar.executeQuery();
+             if(rs.next()){
+            menuPrincipal telademenu  = new menuPrincipal();
+            telademenu.nomeUsuarioMenu.setText(rs.getString(2));
+             }
+            
+       }catch(SQLException e){
+           System.out.println(e);
+       }  
+
+      }*/
 }

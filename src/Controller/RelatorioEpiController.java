@@ -377,7 +377,15 @@ if(i == JOptionPane.YES_OPTION) {
              ocultarCampos();
       
   }
-        
+  
+  
+  public void imprimirEtiquetas(){
+      
+                   ImageIcon iconeSalvo = new ImageIcon("c:\\almoxarifadoExpress\\icone\\atencao.png");
+                JOptionPane.showMessageDialog(null," Em Contrução, aguarde novidades nas próximas versões","Consulta de EPI",JOptionPane.PLAIN_MESSAGE,iconeSalvo );
+      
+  }
+  
 }
 
 
